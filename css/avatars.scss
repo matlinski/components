@@ -1,0 +1,127 @@
+$small: 25px;
+$medium: 50px;
+$big: 100px;
+$border-color: #555;
+$bg-color: #fff;
+.avatar{
+    border-radius: 50%;
+    &.small{
+        width: $small;
+        height: $small;
+    }
+    &.medium{
+        width: $medium;
+        height: $medium;
+    }
+    &.big{
+        width: $big;
+        height: $big;
+    }
+}
+
+.avatar--with-border{
+    border-radius: 50%;
+    &.small{
+        width: $small;
+        height: $small;
+        margin: $small/25*2;
+        box-shadow: 0 0 0 $small/25 $bg-color, 0 0 0 $small/25*2 $border-color;
+    }
+    &.medium{
+        width: $medium;
+        height: $medium;
+        margin: $medium/25*2;
+        box-shadow: 0 0 0 $medium/25 $bg-color, 0 0 0 $medium/25*2 $border-color;
+    }
+    &.big{
+        width: $big;
+        height: $big;
+        margin: $big/25*2;
+        box-shadow: 0 0 0 $big/25 $bg-color, 0 0 0 $big/25*2 $border-color;
+    }
+}
+.avatar-diamond{
+    display: inline-block;
+    transform: rotate(45deg);
+    overflow: hidden;
+    &>*{
+        transform: rotate(-45deg);
+        position: relative;
+        left: -22%;
+        bottom: 22%;
+        width: 145%;
+        height: 145%;
+
+    }
+    &.small{
+        width: $small*0.85;
+        height: $small*0.85;
+        margin: $small/8;
+    }
+    &.medium{
+        width: $medium*0.85;
+        height: $medium*0.85;
+        margin: $medium/8;
+    }
+    &.big{
+        width: $big*0.85;
+        height: $big*0.85;
+        margin: $big/8;
+    }
+}
+.avatar-diamond--round {
+    display: inline-block;
+    transform: rotate(45deg);
+    overflow: hidden;
+    &>*{
+        transform: rotate(-45deg);
+        position: relative;
+        left: -22%;
+        bottom: 22%;
+        width: 145%;
+        height: 145%;
+
+    }
+    &.small{
+        width: $small*0.85;
+        height: $small*0.85;
+        margin: $small/8;
+        border-radius: $small/4;
+    }
+    &.medium{
+        width: $medium*0.85;
+        height: $medium*0.85;
+        margin: $medium/8;
+        border-radius: $medium/4;
+    }
+    &.big{
+        width: $big*0.85;
+        height: $big*0.85;
+        margin: $big/8;
+        border-radius: $big/4;
+    }
+}
+.avatar-skewed {
+    display: inline-block;
+    transform: skewX(-15deg);
+    overflow: hidden;
+    &>*{
+        width: 100%;
+        height: 100%;
+    }
+    &.small{
+        width: $small;
+        height: $small;
+        margin: $small/8;
+    }
+    &.medium{
+        width: $medium;
+        height: $medium;
+        margin: $medium/8;
+    }
+    &.big{
+        width: $big;
+        height: $big;
+        margin: $big/8;
+    }
+}

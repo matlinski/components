@@ -1,0 +1,79 @@
+.button-blue {
+  background-color: rgba(59, 89, 153, 0.85);
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  border: 3px solid #1c4080;
+  border-radius: 3px;
+}
+
+.button-blue:hover, .button-blue:focus {
+  background-color: #3b5999;
+}
+
+.button-blue:active {
+  background-color: #1c4080;
+  border: 3px solid #3b5999;
+}
+
+.button-blue.small {
+  font-size: 1rem;
+}
+
+.button-blue.medium {
+  font-size: 1.5rem;
+}
+
+.button-blue.big {
+  font-size: 2rem;
+}
+
+.button-round {
+  background-color: #1ca1f2;
+  padding: 0.4em 1em;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+}
+
+.button-round:hover, .button-round:focus {
+  background-color: #006ebf;
+}
+
+.button-round.small {
+  font-size: 1rem;
+  border-radius: 1rem;
+  margin: 2px;
+}
+
+.button-round.small:active {
+  background-color: #006ebf;
+  -webkit-box-shadow: 0 0 0 1px white, 0 0 0 2px #1ca1f2;
+          box-shadow: 0 0 0 1px white, 0 0 0 2px #1ca1f2;
+}
+
+.button-round.medium {
+  font-size: 1.5rem;
+  border-radius: 1.5rem;
+  margin: 4px;
+}
+
+.button-round.medium:active {
+  background-color: #006ebf;
+  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px #1ca1f2;
+          box-shadow: 0 0 0 2px white, 0 0 0 4px #1ca1f2;
+}
+
+.button-round.big {
+  font-size: 2rem;
+  border-radius: 2rem;
+  margin: 6px;
+}
+
+.button-round.big:active {
+  background-color: #006ebf;
+  -webkit-box-shadow: 0 0 0 3px white, 0 0 0 6px #1ca1f2;
+          box-shadow: 0 0 0 3px white, 0 0 0 6px #1ca1f2;
+}
+/*# sourceMappingURL=buttons.css.map */

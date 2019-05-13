@@ -1,0 +1,150 @@
+.avatar {
+  border-radius: 50%;
+}
+
+.avatar.small {
+  width: 25px;
+  height: 25px;
+}
+
+.avatar.medium {
+  width: 50px;
+  height: 50px;
+}
+
+.avatar.big {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar--with-border {
+  border-radius: 50%;
+}
+
+.avatar--with-border.small {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px #555;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 2px #555;
+}
+
+.avatar--with-border.medium {
+  width: 50px;
+  height: 50px;
+  margin: 4px;
+  -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px #555;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 4px #555;
+}
+
+.avatar--with-border.big {
+  width: 100px;
+  height: 100px;
+  margin: 8px;
+  -webkit-box-shadow: 0 0 0 4px #fff, 0 0 0 8px #555;
+          box-shadow: 0 0 0 4px #fff, 0 0 0 8px #555;
+}
+
+.avatar-diamond {
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  overflow: hidden;
+}
+
+.avatar-diamond > * {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  position: relative;
+  left: -22%;
+  bottom: 22%;
+  width: 145%;
+  height: 145%;
+}
+
+.avatar-diamond.small {
+  width: 21.25px;
+  height: 21.25px;
+  margin: 3.125px;
+}
+
+.avatar-diamond.medium {
+  width: 42.5px;
+  height: 42.5px;
+  margin: 6.25px;
+}
+
+.avatar-diamond.big {
+  width: 85px;
+  height: 85px;
+  margin: 12.5px;
+}
+
+.avatar-diamond--round {
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  overflow: hidden;
+}
+
+.avatar-diamond--round > * {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  position: relative;
+  left: -22%;
+  bottom: 22%;
+  width: 145%;
+  height: 145%;
+}
+
+.avatar-diamond--round.small {
+  width: 21.25px;
+  height: 21.25px;
+  margin: 3.125px;
+  border-radius: 6.25px;
+}
+
+.avatar-diamond--round.medium {
+  width: 42.5px;
+  height: 42.5px;
+  margin: 6.25px;
+  border-radius: 12.5px;
+}
+
+.avatar-diamond--round.big {
+  width: 85px;
+  height: 85px;
+  margin: 12.5px;
+  border-radius: 25px;
+}
+
+.avatar-skewed {
+  display: inline-block;
+  -webkit-transform: skewX(-15deg);
+          transform: skewX(-15deg);
+  overflow: hidden;
+}
+
+.avatar-skewed > * {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-skewed.small {
+  width: 25px;
+  height: 25px;
+  margin: 3.125px;
+}
+
+.avatar-skewed.medium {
+  width: 50px;
+  height: 50px;
+  margin: 6.25px;
+}
+
+.avatar-skewed.big {
+  width: 100px;
+  height: 100px;
+  margin: 12.5px;
+}
+/*# sourceMappingURL=avatars.css.map */
