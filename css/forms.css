@@ -1,0 +1,52 @@
+.form-facebook {
+  color: #999ca8;
+  font-family: sans-serif;
+}
+
+.form-facebook > .input > input {
+  padding: 0.5em 0.75em;
+  border-radius: 9px;
+  font-size: 1.25rem;
+}
+
+.form-facebook > .input > input:hover, .form-facebook > .input > input:focus {
+  border: 2px solid #999ca8;
+  outline: none;
+}
+
+.form-facebook > .input > .error {
+  position: relative;
+  left: 20px;
+  display: none;
+  /*inline-block;*/
+  padding: 1.2em 1.5em;
+  background: #b00;
+  color: white;
+  border-radius: 5px;
+}
+
+.form-facebook > .input > .error::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background: #b00;
+}
+
+.form-facebook > .button {
+  position: relative;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  color: white;
+  padding: 0.5em 1.5em;
+  background: -webkit-gradient(linear, left top, left bottom, from(#75b861), to(#5c8f47));
+  background: linear-gradient(#75b861, #5c8f47);
+}
+
+.form-facebook > .button:active {
+  top: 2px;
+}
+/*# sourceMappingURL=forms.css.map */

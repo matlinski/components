@@ -136,4 +136,83 @@
 .button-youtube.big {
   font-size: 1.33333rem;
 }
+
+.button-ferrari {
+  position: relative;
+  text-transform: uppercase;
+  padding: 0.25em 1.5em;
+  text-decoration: none;
+  font-weight: 500;
+  color: #555;
+  font-family: sans-serif;
+  border: 2px solid #555;
+  border-radius: 2px;
+}
+
+.button-ferrari::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  background: #555;
+  z-index: -1;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.button-ferrari:hover, .button-ferrari:focus {
+  color: white;
+}
+
+.button-ferrari:hover::before, .button-ferrari:focus::before {
+  top: 0;
+  bottom: 0;
+}
+
+.button-ferrari:active {
+  background-color: #333;
+  border: 2px solid white;
+}
+
+.button-ferrari.small {
+  font-size: 0.66667rem;
+}
+
+.button-ferrari.medium {
+  font-size: 1rem;
+}
+
+.button-ferrari.big {
+  font-size: 1.33333rem;
+}
+
+.button-aston {
+  position: relative;
+  text-transform: uppercase;
+  padding: 1em 2.5em;
+  text-decoration: none;
+  font-weight: 500;
+  color: #404040;
+  font-family: sans-serif;
+  border: 2px solid rgba(64, 64, 64, 0.5);
+  border-radius: 2px;
+}
+
+.button-aston:hover, .button-aston:focus {
+  border: 2px solid #404040;
+}
+
+.button-aston.small {
+  font-size: 0.5rem;
+}
+
+.button-aston.medium {
+  font-size: 0.75rem;
+}
+
+.button-aston.big {
+  font-size: 1rem;
+}
 /*# sourceMappingURL=buttons.css.map */

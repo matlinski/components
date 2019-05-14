@@ -1,0 +1,48 @@
+$bg-color: white;
+.form-facebook{
+    color: rgb(60%, 61%, 66%);
+    font-family: sans-serif;
+    &>.input{
+        &>input{
+            padding: 0.5em 0.75em;
+            border-radius: 9px;
+            font-size: 1.25rem;
+            &:hover,
+            &:focus{
+                border: 2px solid rgb(60%, 61%, 66%);
+                outline: none;
+            }
+        }
+        &>.error{
+            position: relative;
+            left: 20px;
+            display: none;/*inline-block;*/
+            padding: 1.2em 1.5em;
+            background: #b00;
+            color: $bg-color;
+            border-radius: 5px;
+            &::before{
+                content: "";
+                position: absolute;
+                left: -10px;
+                width: 20px;
+                height: 20px;
+                transform: rotate(45deg);
+                background: #b00;
+                
+            }
+        }
+    }
+    &>.button{
+        position: relative;
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+        color: $bg-color;
+        padding: 0.5em 1.5em;
+        background: linear-gradient(rgb(46%, 72%, 38%), rgb(36%, 56%, 28%));
+        &:active{
+            top: 2px;
+        }
+    }
+
+}
