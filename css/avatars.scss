@@ -4,40 +4,156 @@ $big: 100px;
 $border-color: #555;
 $bg-color: #fff;
 .avatar{
-    border-radius: 50%;
+    display: inline-block;
+    color: black;
+    position: relative;
+    &>*{
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+    }
     &.small{
         width: $small;
         height: $small;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0;
+            right: -0.15em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $small/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $small/2.5;
+            height: $small/2.5;
+            background-color: #b00;
+        }
     }
     &.medium{
         width: $medium;
         height: $medium;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0;
+            right: -0.15em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $medium/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $medium/2.5;
+            height: $medium/2.5;
+            background-color: #b00;
+        }
     }
     &.big{
         width: $big;
         height: $big;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0;
+            right: -0.15em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "123";
+            font-size: $big/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $big/2.5;
+            height: $big/2.5;
+            background-color: #b00;
+        }
     }
 }
 
 .avatar--with-border{
     border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    &>*{
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+    }
     &.small{
         width: $small;
         height: $small;
         margin: $small/25*2;
         box-shadow: 0 0 0 $small/25 $bg-color, 0 0 0 $small/25*2 $border-color;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:-0.25em;
+            right: -0.5em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $small/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $small/2.5;
+            height: $small/2.5;
+            background-color: #b00;
+        }
     }
     &.medium{
         width: $medium;
         height: $medium;
         margin: $medium/25*2;
         box-shadow: 0 0 0 $medium/25 $bg-color, 0 0 0 $medium/25*2 $border-color;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:-0.25em;
+            right: -0.5em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $medium/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $medium/2.5;
+            height: $medium/2.5;
+            background-color: #b00;
+        }
     }
     &.big{
         width: $big;
         height: $big;
         margin: $big/25*2;
         box-shadow: 0 0 0 $big/25 $bg-color, 0 0 0 $big/25*2 $border-color;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:-0.25em;
+            right: -0.5em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "123";
+            font-size: $big/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $big/2.5;
+            height: $big/2.5;
+            background-color: #b00;
+        }
     }
 }
 .avatar-diamond{
@@ -57,16 +173,70 @@ $bg-color: #fff;
         width: $small*0.85;
         height: $small*0.85;
         margin: $small/8;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $small/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $small/2.5;
+            height: $small/2.5;
+            background-color: #b00;
+        }
     }
     &.medium{
         width: $medium*0.85;
         height: $medium*0.85;
         margin: $medium/8;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $medium/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $medium/2.5;
+            height: $medium/2.5;
+            background-color: #b00;
+        }
     }
     &.big{
         width: $big*0.85;
         height: $big*0.85;
         margin: $big/8;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $big/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $big/2.5;
+            height: $big/2.5;
+            background-color: #b00;
+        }
     }
 }
 .avatar-diamond--round {
@@ -87,41 +257,156 @@ $bg-color: #fff;
         height: $small*0.85;
         margin: $small/8;
         border-radius: $small/4;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.3em;
+            right: 0.3em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $small/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $small/2.5;
+            height: $small/2.5;
+            background-color: #b00;
+        }
     }
     &.medium{
         width: $medium*0.85;
         height: $medium*0.85;
         margin: $medium/8;
         border-radius: $medium/4;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.3em;
+            right: 0.3em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $medium/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $medium/2.5;
+            height: $medium/2.5;
+            background-color: #b00;
+        }
     }
     &.big{
         width: $big*0.85;
         height: $big*0.85;
         margin: $big/8;
         border-radius: $big/4;
+        &::after{
+            transform: rotate(-45deg);
+            font-family: sans-serif;
+            position: absolute;
+            top:0.3em;
+            right: 0.3em;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            content: "23";
+            font-size: $big/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $big/2.5;
+            height: $big/2.5;
+            background-color: #b00;
+        }
     }
 }
 .avatar-skewed {
-    display: inline-block;
     transform: skewX(-15deg);
+    display: inline-block;
     overflow: hidden;
+    position: relative;
     &>*{
-        width: 100%;
-        height: 100%;
+        position: absolute;
+        left: 68%;
+        top: 50%;
+        transform: skewX(15deg) translate(-50%, -50%);
+        width: 130%;
+        height: auto;
     }
     &.small{
         width: $small;
         height: $small;
         margin: $small/8;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            -ms-clip-path: polygon(0 0, 100% 0, 100% 100%);
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 0.3em;
+            content: "23";
+            font-size: $small/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $small/2.5;
+            height: $small/2.5;
+            background-color: #b00;
+        }
     }
     &.medium{
         width: $medium;
         height: $medium;
         margin: $medium/8;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            -ms-clip-path: polygon(0 0, 100% 0, 100% 100%);
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 0.3em;
+            content: "23";
+            font-size: $medium/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $medium/2.5;
+            height: $medium/2.5;
+            background-color: #b00;
+        }
     }
     &.big{
         width: $big;
         height: $big;
         margin: $big/8;
+        &::after{
+            font-family: sans-serif;
+            position: absolute;
+            top:0.25em;
+            right: 0.25em;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 0.3em;
+            content: "23";
+            font-size: $big/7.5;
+            font-weight: 900;
+            color: $bg-color;
+            width: $big/2.5;
+            height: $big/2.5;
+            background-color: #b00;
+        }
     }
 }

@@ -1,4 +1,4 @@
-.button-blue {
+.button-facebook {
   background-color: rgba(59, 89, 153, 0.85);
   padding: 0.25em 0.5em;
   text-decoration: none;
@@ -8,28 +8,28 @@
   border-radius: 3px;
 }
 
-.button-blue:hover, .button-blue:focus {
+.button-facebook:hover, .button-facebook:focus {
   background-color: #3b5999;
 }
 
-.button-blue:active {
+.button-facebook:active {
   background-color: #1c4080;
   border: 3px solid #3b5999;
 }
 
-.button-blue.small {
+.button-facebook.small {
   font-size: 1rem;
 }
 
-.button-blue.medium {
+.button-facebook.medium {
   font-size: 1.5rem;
 }
 
-.button-blue.big {
+.button-facebook.big {
   font-size: 2rem;
 }
 
-.button-round {
+.button-twitter {
   background-color: #1ca1f2;
   padding: 0.4em 1em;
   text-decoration: none;
@@ -37,43 +37,103 @@
   font-family: sans-serif;
 }
 
-.button-round:hover, .button-round:focus {
+.button-twitter:hover, .button-twitter:focus {
   background-color: #006ebf;
 }
 
-.button-round.small {
+.button-twitter.small {
   font-size: 1rem;
   border-radius: 1rem;
   margin: 2px;
 }
 
-.button-round.small:active {
+.button-twitter.small:active {
   background-color: #006ebf;
   -webkit-box-shadow: 0 0 0 1px white, 0 0 0 2px #1ca1f2;
           box-shadow: 0 0 0 1px white, 0 0 0 2px #1ca1f2;
 }
 
-.button-round.medium {
+.button-twitter.medium {
   font-size: 1.5rem;
   border-radius: 1.5rem;
   margin: 4px;
 }
 
-.button-round.medium:active {
+.button-twitter.medium:active {
   background-color: #006ebf;
   -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px #1ca1f2;
           box-shadow: 0 0 0 2px white, 0 0 0 4px #1ca1f2;
 }
 
-.button-round.big {
+.button-twitter.big {
   font-size: 2rem;
   border-radius: 2rem;
   margin: 6px;
 }
 
-.button-round.big:active {
+.button-twitter.big:active {
   background-color: #006ebf;
   -webkit-box-shadow: 0 0 0 3px white, 0 0 0 6px #1ca1f2;
           box-shadow: 0 0 0 3px white, 0 0 0 6px #1ca1f2;
+}
+
+.button-instagram {
+  background-color: #3896f0;
+  padding: 0.4em 1.5em;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 9px;
+}
+
+.button-instagram:hover, .button-instagram:focus {
+  background-color: rgba(56, 150, 240, 0.9);
+}
+
+.button-instagram:active {
+  background-color: rgba(56, 150, 240, 0.7);
+}
+
+.button-instagram.small {
+  font-size: 1rem;
+}
+
+.button-instagram.medium {
+  font-size: 1.5rem;
+}
+
+.button-instagram.big {
+  font-size: 2rem;
+}
+
+.button-youtube {
+  background-color: #cc0000;
+  text-transform: uppercase;
+  padding: 0.5em 0.75em;
+  text-decoration: none;
+  font-weight: 500;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 3px;
+}
+
+.button-youtube:hover, .button-youtube:focus {
+  background-color: #b30d0d;
+}
+
+.button-youtube:active {
+  background-color: #991a1a;
+}
+
+.button-youtube.small {
+  font-size: 0.66667rem;
+}
+
+.button-youtube.medium {
+  font-size: 1rem;
+}
+
+.button-youtube.big {
+  font-size: 1.33333rem;
 }
 /*# sourceMappingURL=buttons.css.map */
