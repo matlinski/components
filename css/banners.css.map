@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAA;EACT,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,WAAW,EAAE,UAAU;EACvB,SAAS,EAAE,IAAI;EACf,cAAc,EAAE,GAAG;EACnB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,QAAQ,EAAE,MAAM;EAChB,gBAAgB,EAAE,oCAAoC;EACtD,eAAe,EAAE,SAAS;CAC7B",
-    "sources": [
-        "banners.scss"
-    ],
-    "names": [],
-    "file": "banners.css"
-}
