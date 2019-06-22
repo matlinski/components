@@ -15,15 +15,29 @@ function info($settings = false){
 }
 
 
-function button($s = []){
+function button($s){
     $settings["value"] = "template";
     $settings["href"] = "#";
     $settings["size"] = "medium";
     $settings["style"] = "default";
     $settings["script"] = "default";
     $settings["id"] = "btn" . $GLOBALS['counter'];
-    foreach($s as $key => $value) $settings[$key] = $value;
+ $s = explode(",", $s);
+    foreach($s as $key => $value) $s[$key] = explode("=", $value);
+foreach($s as $value){
+ $value[0] =  str_replace(' ', '', $value[0]);
+ $value[0] = strtolower($value[0]);
+$settings[$value[0]] = $value[1];
+}
     info($settings);
     $GLOBALS['counter'] = $GLOBALS['counter'] + 1;
+    $value = $settings["value"];
+    $href = $settings["href"];
+    $size = $settings["size"];
+    $style = $settings["style"];
+    $script = $settings["script"];
+    $id = $settings["id"];
+    echo "<a href=\"{$href}\">{$value}</a>";
 }
+
 ?>

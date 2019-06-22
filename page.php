@@ -1,6 +1,5 @@
 <?php
-    require_once("components1.php");
-    $GLOBALS["info_anabled"] = false;
+    require_once("components.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php info(4)?>
+    <?php button("value =  test, id = myID, href = https://google.com")?>
 </body>
 </html>
