@@ -1,5 +1,7 @@
 <?php
     require_once("components.php");
+    $GLOBALS["bg-color"] = "black";
+    $GLOBALS["tx-color"] = "white";
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body{
+            background: black;
+        }
+    </style>
 </head>
 <body>
-    <?php button("value =  test, id = myID, href = https://google.com")?>
+    <?= button('{
+        "template": "casual_light",
+        "style": {"&": "margin: 50px"}
+        }'); ?>
 </body>
 </html>
