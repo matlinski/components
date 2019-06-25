@@ -1,6 +1,6 @@
 <?php
     require_once("components.php");
-
+    
 ?>
     <!-- $GLOBALS["bg-color"] = "50%, 0%, 0%";
     $GLOBALS["tx-color"] = "100%, 100%, 100%"; -->
@@ -20,13 +20,7 @@
     </style> -->
 </head>
 <body>
-    <?= button('{"template": "elegant", "style": 
-    {
-        "&": "padding: 20px;", 
-        "& a": "padding: 30px;",
-        "& a::before": "background-color: #900;"
-    }
-    }'); ?>
-    <?= button('{"template": "elegant", "style": "& { padding: 20px;}& a{ padding: 30px;}& a::before{ background-color: #900;}"'); ?>
+    <?= button(["lol"]); ?>
+    <?= button(["ads","elegant", "href=\"https://google.com\"", "& a{color: red}"]); ?>
 </body>
 </html>
