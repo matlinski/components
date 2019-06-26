@@ -52,12 +52,12 @@ function Component($json, $default, $base_class){
         $style_compiler = "";
         foreach($style as $key => $value){
             $key = preg_replace("/[&]/", "", $key);
-            $style_compiler .= ".{$base_class}.{$class}$key{\n".$value."\n}";
+            $style_compiler .= ".{$base_class}.{$template}$key{\n".$value."\n}";
         }
         $style = $style_compiler;
     } else {
         $style_compiler = "";
-        $style = preg_replace("/[&]/", ".{$base_class}.{$class}", $style);
+        $style = preg_replace("/[&]/", ".{$base_class}.{$template}", $style);
         $style_compiler .= $style;
         $style = $style_compiler;
     }

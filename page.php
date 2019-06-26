@@ -14,7 +14,8 @@
     ?>
 </head>
 <body>
-    <?= button('{"content":"test", "attr": {"href":"https://google.com"}}'); ?>
+    <?= button(); ?>
+    <?= button('{"template":"fun_red", "attr": {"href":"https://google.com"}}'); ?>
     <?= button(["ads","elegant", "id=\"btn0\" class=\"btn0\"", "&>.btn_link:visited{color:red;}"]); ?>
 </body>
 </html>

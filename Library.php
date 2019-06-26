@@ -8,10 +8,10 @@ function Button($json = ""){
                         #USER INPUT ABOVE#
     $compiler = "";
     $base_class = "btn";
-    $default = ["content"=> "placeholder", "class" =>"default", "attr" => "href='#'", "style"=> "", "script"=> ""];
+    $default = ["content"=> "placeholder", "template" =>"default", "attr" => "href='#'", "style"=> "", "script"=> ""];
                         #PRESETS ABOVE#
     foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
-    $compiler .= "<div class=\"btn $class\">";
+    $compiler .= "<div class=\"btn $template\">";
     if($style) $compiler .= "<style>$style</style>";
     $compiler .= "<a class=\"btn_link $user_class\" $attr >{$content}</a>";
     if($script) $compiler .= "<script>$script</script>";
