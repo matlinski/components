@@ -34,6 +34,19 @@ function Component($json, $default, $base_class){
             } 
         }
         $attr = $attr_compiler;
+    } else {
+        if(preg_match("/class([^']*?)=([^']*?)\"([^']*?)\"/", $attr)){
+            $attr= explode(" ",$attr);
+            $class_string = preg_grep("/class([^']*?)=([^']*?)\"([^']*?)\"/", $attr);
+            $attr = preg_replace("/class([^']*?)=([^']*?)\"([^']*?)\"/", "", $attr);
+            $attr= implode(" ",$attr);
+            $class_string= implode("",$class_string);
+            $class_string= explode("class=",$class_string);
+            $class_string= implode("",$class_string);
+            $class_string= explode("\"",$class_string);
+            $class_string= implode("",$class_string);
+            $user_class = $class_string;
+            }
     }
     if(is_array($style)){
         $style_compiler = "";
