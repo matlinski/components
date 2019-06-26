@@ -9,11 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <?php
-    require_once("components.php");  
+    require_once("Library.php");
+    info();
     ?>
 </head>
 <body>
-    <?= button('{"style":"&>a{color: red}"}'); ?>
-    <?= button(["ads","elegant", "href=\"https://google.com\"", "& a{color: red}"]); ?>
+    <?= button('{"content":"test", "attr": {"href":"https://google.com"}}'); ?>
+    <?= button(["ads","elegant", ["class"=>"lol", "id"=> "btn0", "href"=>"https://google.com/"], "&>.btn_link:visited{color:red;}"]); ?>
 </body>
 </html>
