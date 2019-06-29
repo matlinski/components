@@ -25,29 +25,6 @@ function Component($json, $default, $base_class){
         $$key = $value;
         $output[$key] = $value;
     }
-    if(is_array($attr)){
-        $attr_compiler = "";
-        foreach($attr as $key => $value){
-            if($key !== "class")  $attr_compiler .= " $key=\"$value\"" ;
-            else{
-                $user_class = " $value";
-            } 
-        }
-        $attr = $attr_compiler;
-    } else {
-        if(preg_match("/class([^']*?)=([^']*?)\"([^']*?)\"/", $attr)){
-            $attr= explode(" ",$attr);
-            $class_string = preg_grep("/class([^']*?)=([^']*?)\"([^']*?)\"/", $attr);
-            $attr = preg_replace("/class([^']*?)=([^']*?)\"([^']*?)\"/", "", $attr);
-            $attr= implode(" ",$attr);
-            $class_string= implode("",$class_string);
-            $class_string= explode("class=",$class_string);
-            $class_string= implode("",$class_string);
-            $class_string= explode("\"",$class_string);
-            $class_string= implode("",$class_string);
-            $user_class = $class_string;
-            }
-    }
     if(is_array($style)){
         $style_compiler = "";
         foreach($style as $key => $value){
@@ -62,9 +39,43 @@ function Component($json, $default, $base_class){
         $style = $style_compiler;
     }
     $output["attr"] = $attr;
-    $output["user_class"] = $user_class;
     $output["style"] = $style;
     return $output;
 }   
-
+function attr_append($attr, $base_attributes){
+    $attr_compiler = "";
+    if(is_array($attr)){
+        foreach($attr as $key => $value){
+            foreach ($base_attributes as $k => $v) {
+                var_dump($value, $v);
+                if($key === $k) {
+                    $attr_compiler .= " $key=\"$value\"";
+                }
+                else{
+                    $attr_compiler .= " $key=\"$value\"";
+                } 
+            }
+        }
+        $attr = $attr_compiler;
+    } else {
+        $attr= explode(" ",$attr);
+        foreach ($attr as $key => $value) {
+            foreach ($base_attributes as $k => $v) {
+                if(preg_match("/type([^']*?)=([^']*?)\"([^']*?)\"/", $value)){
+                    $attr_string = preg_grep("/type([^']*?)=([^']*?)\"([^']*?)\"/", [$value]);
+                    $value = preg_replace("/type([^']*?)=([^']*?)\"([^']*?)\"/", "", $value);
+                    $attr_string= implode("",$attr_string);
+                    $attr_string= explode("type=",$attr_string);
+                    $attr_string= implode("",$attr_string);
+                    $attr_string= explode("\"",$attr_string);
+                    $attr_string= implode("",$attr_string);
+                    var_dump($attr_string);
+                    }
+                    var_dump($key, $value, $k, $v);
+                    $attr_compiler .= " $key=\"$attr_string\"";
+            }
+        }
+    }
+    return $attr_compiler;
+}
 ?>
