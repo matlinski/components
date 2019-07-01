@@ -4,4 +4,7 @@ require_once("utilities/attr.append.php");
 require_once("types/Component.constructor.php");
 require_once("types/Button.constructor.php");
 require_once("types/Alert.constructor.php");
+require_once("types/Badge.constructor.php");
+require_once("types/Progress.constructor.php");
+require_once("types/Spinner.constructor.php");
 ?>
