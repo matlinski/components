@@ -12,12 +12,12 @@ function info($settings =false/*, $t = false*/){
                         $compiler .= "settings.".$key.".".$k2." = "."\"$v2\";\n";
                     }
                 }
-                if(!is_array($value)) $compiler .= "settings.".$key." = "."\"$value\";\n";
+                if(!is_array($value)){
+                    if(empty($value)) $compiler .= 'settings.'.$key.' = "/* '.$key.' goes here */";';
+                    else $compiler .= "settings.".$key." = "."\"$value\";\n";
+                } 
             }
         }
-        $compiler .= "settings.attr = '/* attributes go here */';\n";
-        $compiler .= "settings.style = '/* style goes here */';\n";
-        $compiler .= "settings.script = '/* script goes here */';\n";
         $compiler .= "console.table(settings);\n";
         // if(is_array($t)){
         //     $compiler2 .= "console.log('The available templates for this components are: ');\n";

@@ -9,8 +9,9 @@ $default = ["radius"=>"2rem", "template" =>"spinner-border", "attr" => "", "styl
 foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
 $compiler .= '<span id="'.$id.'">';
-    #COMPILATION BEGINS#                        
-$compiler .= '<div class="spinner '.$template.'" style="width:'.$radius.'; height:'.$radius.'" role="status">
+    #COMPILATION BEGINS#       
+    $base_attributes = ["role"=>"status"];              
+$compiler .= '<div class="spinner '.$template.'" style="width:'.$radius.'; height:'.$radius.'" '.attr_append($attr, $base_attributes).'>
 <span class="sr-only">Loading...</span>
 </div>';
 if($script) $compiler .= "<script>$script</script>";
