@@ -1,12 +1,12 @@
 <?php
 
-function Progress($json = ""){
+function Progress($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "progress";
 $default = ["progress" => 25,"min"=> 0, "max"=>100, "template" =>"bg-success","attr"=>"", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
-foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
+foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
 $compiler .= '<span id="'.$id.'">';
 $compiler .= '<div class="progress" style="width: '.$max.'%">';

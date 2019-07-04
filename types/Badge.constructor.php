@@ -1,12 +1,12 @@
 <?php
 
-function Badge($json = ""){
+function Badge($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "badge";
 $default = ["content"=> "placeholder", "tag"=>"span", "attr" => "", "template" =>"badge-primary", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
-foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
+foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
 $compiler .= '<span id="'.$id.'">';
     #COMPILATION BEGINS#                        

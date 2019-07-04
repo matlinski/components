@@ -1,17 +1,24 @@
 <?php
-function Component($json, $default, $base_class){
-    if(is_string($json))$s = json_decode($json, true);
-    if(json_last_error() != JSON_ERROR_NONE && !is_array($json)){
+function Component($input, $default, $base_class){
+    if(is_string($input)) $s = json_decode($input, true);
+    if(json_last_error() != JSON_ERROR_NONE && !is_array($input)){
         $settings = $default;
+        if($input)$settings["content"] = $input;
         echo "<script>".info($settings)."</script>";
-    }  elseif(is_array($json))  {
+    }  elseif(is_array($input)){
         $output = [];
         $settings = $default;
         $i = 0;
         foreach($settings as $key => $value){
-            if($i >= count($json)) break;
-            $settings[$key] = $json[$i];
-            $i++;
+            if(!(array_keys($input) !== range(0, count($input) - 1))){
+                if($i >= count($input)) break;
+                $settings[$key] = $input[$i];
+                $i++;
+            } else {
+                foreach ($input as $k => $v) {
+                    $settings[$k] = $v;
+                }
+            }
         }
     }  else  {
         

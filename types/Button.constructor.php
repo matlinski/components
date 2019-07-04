@@ -1,14 +1,17 @@
 <?php
-function Button($json = ""){
+function Button($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "btn";
 $default = ["content"=> "placeholder", "tag"=>"button", "attr" => "", "template" =>"btn-primary", "tooltip"=>false, "dropdown"=>false, "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
-foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
+foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
 $compiler .= '<span id="'.$id.'">';
-if($dropdown) $compiler .= '<div class="dropdown '.$dropdown[count($dropdown)-1].'">';
+if($dropdown){
+    if(is_array($dropdown)) $compiler .= '<div class="dropdown '.$dropdown[count($dropdown)-1].'">';
+    else $compiler .= '<div class="dropdown">';
+}
     #COMPILATION BEGINS#                        
 if($tag === "button"){
 if($tooltip) {

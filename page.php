@@ -25,18 +25,17 @@
     button(["You've got message".Badge([534535, "span", "", "badge-danger"]), "button", "href=\"https://google.com\"", "btn-secondary"]), 
     "h1", 
     ["onclick"=> "test()", "test"=>"test2"],
-     "alert-success", false, "&{padding: 20px}",
-     "function test(){alert(\"lol\")}"]) */?>
+     "alert-success", true, "&{padding: 20px}",
+     "function test(){alert(\"lol\")}"]) ?>
      <?php #Progress([time()%60, 0, 60, "progress-bar-striped progress-bar-animated"])?>
-     <?php # Spinner(["5em", "spinner-grow text-success"]);?>
-
+     <?=  Spinner(); */?>
+<?php # Alert("lol"); ?>
 <?php #Alert([Button(["New messages".Badge([5]), "button", ["data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Tooltip on right"]])]) ?>
-<?= Button('{"content":"Main menu","dropdown": [
-  "<a class=\"dropdown-item\" href=\"./main.php\">Home</a>",
-  "<a class=\"dropdown-item\" href=\"./contact.php\">Contact</a>",
-  "<a class=\"dropdown-item\" href=\"./about-us.php\">About us</a>",
-  "dropright"], "tag": "button"}') ?>
-
+<?php # Button('{"content":"Main menu","dropdown": "<a class=\"dropdown-item\" href=\"./main.php\">Home</a>", "tag": "button"}') ?>
+<div class="btn-group">
+  <?= Button(["template"=>"btn-secondary"]) ?>
+  <?= Button(["content"=>'<span class="sr-only">Toggle Dropdown</span>',"template"=>"btn-secondary dropdown-toggle dropdown-toggle-split"]) ?>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

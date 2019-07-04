@@ -1,12 +1,12 @@
 <?php
 
-function Spinner($json = ""){
+function Spinner($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "spinner";
 $default = ["radius"=>"2rem", "template" =>"spinner-border", "attr" => "", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
-foreach(Component($json, $default, $base_class) as $key => $value) $$key = $value;
+foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
 $compiler .= '<span id="'.$id.'">';
     #COMPILATION BEGINS#       
