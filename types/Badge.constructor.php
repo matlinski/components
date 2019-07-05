@@ -4,7 +4,7 @@ function Badge($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "badge";
-$default = ["content"=> "placeholder", "tag"=>"span", "attr" => "", "template" =>"badge-primary", "style"=> "", "script"=> ""];
+$default = ["content"=> "Content placeholder", "tag"=>"span", "attr" => "", "template" =>"badge-primary", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#

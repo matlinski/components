@@ -4,7 +4,7 @@ function Alert($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "alert";
-$default = ["content"=> "placeholder", "tag"=>"div", "attr" => "", "template" =>"alert-warning fade show", "dismisable"=>true, "style"=> "", "script"=> ""];
+$default = ["content"=> "Content placeholder", "tag"=>"div", "attr" => "", "template" =>"alert-warning fade show", "dismisable"=>true, "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 

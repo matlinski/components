@@ -7,4 +7,5 @@ require_once("types/Alert.constructor.php");
 require_once("types/Badge.constructor.php");
 require_once("types/Progress.constructor.php");
 require_once("types/Spinner.constructor.php");
+require_once("types/Card.constructor.php");
 ?>
