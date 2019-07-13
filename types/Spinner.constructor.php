@@ -8,7 +8,7 @@ $default = ["radius"=>"2rem", "template" =>"spinner-border", "attr" => "", "styl
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
-$compiler .= '<span id="'.$id.'">';
+$compiler .= '<component id="'.$id.'">';
     #COMPILATION BEGINS#       
     $base_attributes = ["role"=>"status"];              
 $compiler .= '<div class="spinner '.$template.'" style="width:'.$radius.'; height:'.$radius.'" '.attr_append($attr, $base_attributes).'>
@@ -17,7 +17,7 @@ $compiler .= '<div class="spinner '.$template.'" style="width:'.$radius.'; heigh
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
     #OPTIONAL STYLE AND SCRIPT ABOVE#
-$compiler .= "</span>";
+$compiler .= "</component>";
     #COMPILATION ENDS#
 return $compiler;
 }

@@ -8,7 +8,7 @@ $default = ["content"=>"<h5>Title placeholder</h5><p>Body placeholder</p><button
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
-$compiler .= '<span id="'.$id.'">';
+$compiler .= '<component id="'.$id.'">';
 $compiler .= '<div class="'.$base_class.'" style="width: '.$width.';">';
     #COMPILATION BEGINS#               
 $compiler .= $image;
@@ -23,7 +23,7 @@ if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
     #OPTIONAL STYLE AND SCRIPT ABOVE#
 $compiler .= "</div>";
-$compiler .= "</span>";
+$compiler .= "</component>";
     #COMPILATION ENDS#
 return $compiler;
 }

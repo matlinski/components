@@ -8,4 +8,6 @@ require_once("types/Badge.constructor.php");
 require_once("types/Progress.constructor.php");
 require_once("types/Spinner.constructor.php");
 require_once("types/Card.constructor.php");
+require_once("types/Media.constructor.php");
+require_once("types/Input.constructor.php");
 ?>

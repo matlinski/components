@@ -9,7 +9,7 @@ $default = ["content"=> "Content placeholder", "tag"=>"div", "attr" => "", "temp
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 
 $base_attributes = ["role"=>"alert"];
-$compiler .= '<span id="'.$id.'">';
+$compiler .= '<component id="'.$id.'">';
 $compiler .= '<'.$tag.' class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= $content;
     #COMPILATION BEGINS#                        
@@ -23,17 +23,9 @@ $compiler .= '<button type="button" class="close" data-dismiss="alert" aria-labe
 $compiler .= "</$tag>";
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-$compiler .= "</span>";
+$compiler .= "</component>";
     #COMPILATION ENDS#
 return $compiler;
 }
 
 ?>
-<!--<span>
-<div class="alert alert-warning fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-</span>-->

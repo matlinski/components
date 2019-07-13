@@ -7,7 +7,7 @@ $default = ["content"=> "Content placeholder", "tag"=>"button", "attr" => "", "t
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
-$compiler .= '<span id="'.$id.'">';
+$compiler .= '<component id="'.$id.'">';
 if($dropdown){
     if(is_array($dropdown)){
         if(!preg_match("/[<>]+/", $dropdown[count($dropdown)-1])) $compiler .= '<div class="dropdown '.$dropdown[count($dropdown)-1].'">';
@@ -114,7 +114,7 @@ if($dropdown){
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
     #OPTIONAL STYLE AND SCRIPT ABOVE#
-$compiler .= "</span>";
+$compiler .= "</component>";
     #COMPILATION ENDS#
 return $compiler;
 }

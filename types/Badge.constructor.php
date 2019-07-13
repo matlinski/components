@@ -8,7 +8,7 @@ $default = ["content"=> "Content placeholder", "tag"=>"span", "attr" => "", "tem
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
-$compiler .= '<span id="'.$id.'">';
+$compiler .= '<component id="'.$id.'">';
     #COMPILATION BEGINS#                        
 if($tag === "span"){
 $compiler .= '<span class="'.$base_class.' '.$template.'" '.$attr.'>'.$content.'</span>';
@@ -21,7 +21,7 @@ $compiler .= '<a '.attr_append($attr, $base_attributes).' class="'.$base_class.'
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
     #OPTIONAL STYLE AND SCRIPT ABOVE#
-$compiler .= "</span>";
+$compiler .= "</component>";
     #COMPILATION ENDS#
 return $compiler;
 }
