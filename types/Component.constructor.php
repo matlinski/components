@@ -49,8 +49,6 @@ function Component($input, $default, $base_class){
         $style_compiler .= $style;
         $style = $style_compiler;
     }
-    
-    $output["attr"] = $attr;
     $output["style"] = $style;
     return $output;
 }   
