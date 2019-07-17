@@ -11,8 +11,16 @@
     <?php
     require_once("Library.php");
     ?>
+    <script>
+
+</script>
 </head>
 <body>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myID">
+  Modal trigger
+</button>
+
+<?= Modal()?></br>
 <?= Alert()?></br>
 <?= Badge()?></br>
 <?= Button()?></br>
@@ -24,6 +32,7 @@
 <?= Toast()?></br>
 <?= Breadcrumb()?></br>
 <?= Pagination()?>
+
 </body>
 </html>
 
