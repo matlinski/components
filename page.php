@@ -32,6 +32,7 @@
   <?php #Media(["template"=>"list-group-item"])?>
   <?php #Media(["template"=>"list-group-item"])?>
 </div> -->
+<?= Breadcrumb(["separator"=>"]"])?>
 <?= Pagination()?>
 <?= Alert()?>
 <?= Badge()?>

@@ -12,4 +12,5 @@ require_once("types/Media.constructor.php");
 require_once("types/Input.constructor.php");
 require_once("types/Toast.constructor.php");
 require_once("types/Pagination.constructor.php");
+require_once("types/Breadcrumb.constructor.php");
 ?>

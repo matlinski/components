@@ -4,35 +4,45 @@ function Pagination($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "pagination";
-$default = ["content"=> ['<a class="page-link" href="#">1</a>', '<a class="page-link" href="#">2</a>', '<a class="page-link" href="#">3</a>'], "attr" => "", "template" =>"justify-content-left", "style"=> "", "script"=> ""];
+$default = ["links"=> ['#id1','#id2', '#id3'], "active"=>2, "interface"=>["previous", "next"], "attr" => "", "template" =>"justify-links-left", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 
 $base_attributes = [];
-$style .= '#'.$id.'>.'.$base_class.'>.page-item>*{
-    position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-}';
 
 $compiler .= '<component id="'.$id.'">';
 $compiler .= '<ul class="'.$base_class.' '.$template.'" '.$attr.'>';
-$content_compiler = "";
-if(is_array($content)){
-    foreach($content as $value){
-        $content_compiler .= '<li class="page-item">'.$value.'</li>';
+$links_compiler = "";
+if(is_array($links)){
+    $i = 1;
+    if($interface){
+        if($i == $active){
+            if(is_array($interface)) $links_compiler .= '<li class="page-item disabled"><a class="page-link">'.$interface[0].'</a></li>';
+            else $links_compiler .= '<li class="page-item disabled"><a class="page-link" >previous</a></li>';
+        } else{
+            if(is_array($interface)) $links_compiler .= '<li class="page-item"><a class="page-link" href="'.$links[$active-2].'">'.$interface[0].'</a></li>';
+            else $links_compiler .= '<li class="page-item"><a class="page-link" href="'.$links[$active-2].'">previous</a></li>';
+        }
+    } 
+    foreach($links as $value){
+        if($i == $active) $links_compiler .= '<li class="page-item active"><a class="page-link" href="'.$value.'">'.$i.'</a></li>';
+        else $links_compiler .= '<li class="page-item"><a class="page-link" href="'.$value.'">'.$i.'</a></li>';
+        $i++;
     }
-    $content = $content_compiler;
+    if($interface){
+        if($i == $active+1){
+            if(is_array($interface)) $links_compiler .= '<li class="page-item disabled"><a class="page-link">'.$interface[1].'</a></li>';
+            else $links_compiler .= '<li class="page-item disabled"><a class="page-link">next</a></li>';
+        } else{
+            if(is_array($interface)) $links_compiler .= '<li class="page-item"><a class="page-link" href="'.$links[$active].'">'.$interface[1].'</a></li>';
+            else $links_compiler .= '<li class="page-item"><a class="page-link" href="'.$links[$active].'">next</a></li>';
+        }
+    } 
+    $compiler .= $links_compiler;
 } else {
-    $content_compiler .= '<li class="page-item">'.$content.'</li>';
-    $content = $content_compiler;
+    $links_compiler .= 'Please set the links as an array';
+    $compiler .= $links_compiler;
 }
-$compiler .= $content;
     #COMPILATION BEGINS#
 $compiler .= "</ul>";
 if($script) $compiler .= "<script>$script</script>";
