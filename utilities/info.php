@@ -9,7 +9,7 @@ function info($settings =false/*, $t = false*/){
                 if(is_array($value)){
                     $compiler .= "settings.".$key." = "."{};\n";
                     foreach($value as $k2 => $v2){
-                        $compiler .= "settings.".$key.".".$k2." = "."\"$v2\";\n";
+                        $compiler .= "settings.".$key."[".$k2."] = "."\"$v2\";\n";
                     }
                 }
                 if(!is_array($value)){

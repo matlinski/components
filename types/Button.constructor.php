@@ -7,6 +7,16 @@ $default = ["content"=> "Content placeholder", "tag"=>"button", "attr" => "", "t
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
+if($popover){
+    $script .= '$(function () {
+        $(\'[data-toggle="popover"]\').popover()
+      })';
+}
+if($tooltip){
+    $script .= '$(function () {
+        $(\'[data-toggle="tooltip"]\').tooltip()
+      })';
+}
 $compiler .= '<component id="'.$id.'">';
 if($dropdown){
     if(is_array($dropdown)){

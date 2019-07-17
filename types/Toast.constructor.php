@@ -8,7 +8,10 @@ $default = ["header"=> '<img src=\'https://picsum.photos/20/20\' class=\'rounded
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 
-    $base_attributes = ["data-autohide"=>"false", "role"=>"alert", "aria-live"=>"assertive", "aria-atomic"=>"true"];
+$script .= '$(document).ready(function(){
+  $(\'.toast\').toast(\'show\');
+});';
+$base_attributes = ["data-autohide"=>"false", "role"=>"alert", "aria-live"=>"assertive", "aria-atomic"=>"true"];
 $compiler .= '<component id="'.$id.'">';
 $compiler .= '<div class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= '<div class="toast-header">';
