@@ -19,4 +19,6 @@ require_once("types/Pagination.constructor.php");
 require_once("types/Breadcrumb.constructor.php");
 require_once("types/Modal.constructor.php");
 require_once("types/Jumbotron.constructor.php");
+require_once("types/Navbar.constructor.php");
+require_once("types/Navs.constructor.php");
 ?>

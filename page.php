@@ -20,6 +20,7 @@
   Modal trigger
 </button>
 
+<?= Navbar([Navs()])?></br>
 <?= Jumbotron()?></br>
 <?= Modal()?></br>
 <?= Alert()?></br>
