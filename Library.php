@@ -18,4 +18,5 @@ require_once("types/Toast.constructor.php");
 require_once("types/Pagination.constructor.php");
 require_once("types/Breadcrumb.constructor.php");
 require_once("types/Modal.constructor.php");
+require_once("types/Jumbotron.constructor.php");
 ?>

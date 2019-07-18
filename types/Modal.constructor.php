@@ -4,7 +4,7 @@ function Modal($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "modal";
-$default = ["header"=> '<h5 class="modal-title">Header placeholder</h5>', "body"=> '<p>Body placeholder</p>', "footer"=> Button(["Update"]),"trigger_id"=>"myID", "attr" => '', "template" =>"fade", "style"=> "", "script"=> ""];
+$default = ["header"=> '<h5 class=\'modal-title\'>Header placeholder</h5>', "body"=> '<p>Body placeholder</p>', "footer"=> '<button class=\'btn btn-primary\'>Take action!</button>',"trigger_id"=>"myID", "attr" => '', "template" =>"fade", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 

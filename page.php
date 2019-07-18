@@ -20,6 +20,7 @@
   Modal trigger
 </button>
 
+<?= Jumbotron()?></br>
 <?= Modal()?></br>
 <?= Alert()?></br>
 <?= Badge()?></br>
