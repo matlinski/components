@@ -19,7 +19,6 @@
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myID">
   Modal trigger
 </button>
-
 <?= Navbar([Navs()])?></br>
 <?= Jumbotron()?></br>
 <?= Modal()?></br>

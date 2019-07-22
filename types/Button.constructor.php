@@ -3,7 +3,7 @@ function Button($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "btn";
-$default = ["content"=> "Content placeholder", "tag"=>"button", "attr" => "", "template" =>"btn-primary", "tooltip"=>false, "dropdown"=>false, "popover"=>false,"style"=> "", "script"=> ""];
+$default = ["content"=> "Content placeholder", "tag"=>"button", "attr" => "", "template" =>"btn-primary", "tooltip"=>false, "dropdown"=>false, "popover"=>false, "collapse"=>false,"style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
@@ -31,9 +31,8 @@ if($tooltip) {
     if(is_array($tooltip)) $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"$tooltip[1]", "title"=>$tooltip[0]];
     else $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>$tooltip];
     $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
-}
-else{
-    if($dropdown){
+    }
+    elseif($dropdown){
         $base_attributes = ["class"=>"dropdown-toggle", "type"=>"submit", "id"=>"dropdownMenuButton", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"];
         $compiler .= '<button class="'.$base_class.' dropdown-toggle '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
@@ -42,33 +41,39 @@ else{
         else $base_attributes = ["data-container"=>"body", "data-toggle"=>"popover", "data-placement"=>"top", "data-content"=>$popover];
         $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
+    elseif($collapse){
+        $base_attributes = ["type"=>"button", "data-toggle"=>"collapse", "data-target"=>"#id_collapse", "aria-expanded"=>"false", "aria-controls"=>"id_collapse"];
+        $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
+    }
     else {
         $base_attributes = ["type"=>"submit"];
         $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
-}
     #BUTTON TAG ABOVE#
 } elseif($tag === "a"){
     if($tooltip){
         if(is_array($tooltip)) $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>$tooltip[1], "title"=>$tooltip[0]];
         else $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>$tooltip];
         $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
-    } 
-    else{
-        if($dropdown){
-            $base_attributes = ["class"=>"dropdown-toggle", "href"=>"#", "role"=>"button", "id"=>"dropdownMenuButton", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"];
-            $compiler .= '<a class="'.$base_class.' dropdown-toggle '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
-        }
-        elseif($popover){
-            if(is_array($popover)) $base_attributes = ["href"=>"#", "role"=>"button", "data-container"=>"body", "data-toggle"=>"popover", "data-placement"=>$popover[1], "data-content"=>$popover[0]];
-            else $base_attributes = ["href"=>"#", "role"=>"button", "data-container"=>"body", "data-toggle"=>"popover", "data-placement"=>"top", "data-content"=>$popover];
-            $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
-        }
-        else {
-            $base_attributes = ["href"=>"#", "role"=>"button"];
-            $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
-        } #!preg_match("/[<>]+/", $dropdown[count($dropdown)-1])
-    }  
+    }
+    elseif($dropdown){
+        $base_attributes = ["class"=>"dropdown-toggle", "href"=>"#", "role"=>"button", "id"=>"dropdownMenuButton", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"];
+        $compiler .= '<a class="'.$base_class.' dropdown-toggle '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
+    }
+    elseif($popover){
+        if(is_array($popover)) $base_attributes = ["href"=>"#", "role"=>"button", "data-container"=>"body", "data-toggle"=>"popover", "data-placement"=>$popover[1], "data-content"=>$popover[0]];
+        else $base_attributes = ["href"=>"#", "role"=>"button", "data-container"=>"body", "data-toggle"=>"popover", "data-placement"=>"top", "data-content"=>$popover];
+        $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
+    }
+    elseif($collapse){
+        $base_attributes = ["data-toggle"=>"collapse", "href"=>"#id_collapse", "role"=>"button", "aria-expanded"=>"false", "aria-controls"=>"id_collapse"];
+        $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
+    }
+    else {
+        $base_attributes = ["href"=>"#", "role"=>"button"];
+        $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
+    }
+     
     #A TAG ABOVE#
 } elseif($tag === "input"){
     if($tooltip){
@@ -106,6 +111,13 @@ if($dropdown){
     }
     else $compiler .= '<div class="dropdown-menu">'.$dropdown.'</div>';
 } 
+if($collapse){
+    $compiler .= '<div class="collapse" id="id_collapse">
+        <div class="card card-body">
+        '.$collapse.'
+        </div>
+    </div>';
+}
 if($dropdown){
     $compiler .='</div>';
     $style .= '#'.$id.'>.dropdown>.dropdown-menu>*{
