@@ -12,7 +12,7 @@
     require_once("Library.php");
     ?>
     <script>
-
+$('body').scrollspy({ target: '#navbar-example' })
 </script>
 </head>
 <body>
