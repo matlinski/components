@@ -4,7 +4,7 @@ function Carousel($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "carousel";
-$default = ["content"=> ['<img src=\'https://source.unsplash.com/2501x300?gray\' alt=\'...\'>', '<img src=\'https://source.unsplash.com/2500x300?gray\' alt=\'...\'>', '<img src=\'https://source.unsplash.com/2499x300?gray\' alt=\'...\'>'], 'active'=>2, "caption"=>true, "controls"=>false, "indicators"=>false, "attr" => "", "template" =>"slide carousel-fade", 'interval'=>5000,"keyboard"=>true, "pause"=>"hover","ride"=>false, "wrap"=>true, "touch"=>true, "style"=> '', "script"=> ""];
+$default = ["content"=> ['<div><p class=\'display-4\'>First caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2501x300?moon\' alt=\'...\'>', '<div><p class=\'display-4\'>Second caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2500x300?moon\' alt=\'...\'>', '<div><p class=\'display-4\'>Third caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2499x300?moon\' alt=\'...\'>'], 'active'=>2, "caption"=>true, "controls"=>false, "indicators"=>false, "attr" => "", "template" =>"slide", 'interval'=>5000, "style"=> '', "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE# 
@@ -30,12 +30,10 @@ $compiler .= '<component id="'.$id.'">';
 $base_attributes = ["data-ride"=>"carousel"];
 $compiler .= '<div id="'.$secondary_id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= '<div class="carousel-inner">';
-$set_custom = 'data-interval="'.$interval.'" ';
-$set_custom .= 'data-keyboard="'.$keyboard.'" ';
-$set_custom .= 'data-pause="'.$pause.'" ';
-$set_custom .= 'data-ride="'.$ride.'" ';
-$set_custom .= 'data-wrap="'.$wrap.'" ';
-$set_custom .= 'data-touch="'.$touch.'"';
+if(is_int($interval)){
+    $set_interval = 'data-interval="'.$interval.'"';
+}
+
 if(is_array($content)){
     if($indicators){
         $compiler .= '<ol class="carousel-indicators">';
@@ -47,8 +45,8 @@ if(is_array($content)){
     }
     $content_compiler = '';
     foreach($content as $key => $value){
-        if(($key+1) === $active )$content_compiler .= '<div class="carousel-item active" '.$set_custom.'>';
-        else $content_compiler .= '<div class="carousel-item" '.$set_custom.'>';
+        if(($key+1) === $active )$content_compiler .= '<div class="carousel-item active" '.$set_interval.'>';
+        else $content_compiler .= '<div class="carousel-item" '.$set_interval.'>';
         $content_compiler .= $value;
         $content_compiler .= '</div>';
     }

@@ -7,6 +7,11 @@ $default = ["content"=> "Content placeholder", "tag"=>"button", "attr" => "", "t
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
+$secondary_id = 'trigger';
+$id_supply = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'q', 'w', 'e', 'r', 't', 'y', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+for($i = 0; $i < 5; $i++){
+    $secondary_id .= $id_supply[rand(0, (count($id_supply) - 1) )];
+}
 if($popover){
     $script .= '$(function () {
         $(\'[data-toggle="popover"]\').popover()
@@ -17,7 +22,9 @@ if($tooltip){
         $(\'[data-toggle="tooltip"]\').tooltip()
       })';
 }
-$compiler .= '<component id="'.$id.'">';
+if(!$collapse){
+    $compiler .= '<component id="'.$id.'">';
+}
 if($dropdown){
     if(is_array($dropdown)){
         if(!preg_match("/[<>]+/", $dropdown[count($dropdown)-1])) $compiler .= '<div class="dropdown '.$dropdown[count($dropdown)-1].'">';
@@ -27,10 +34,10 @@ if($dropdown){
 }
     #COMPILATION BEGINS#                        
 if($tag === "button"){
-if($tooltip) {
-    if(is_array($tooltip)) $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"$tooltip[1]", "title"=>$tooltip[0]];
-    else $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>$tooltip];
-    $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
+    if($tooltip) {
+        if(is_array($tooltip)) $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"$tooltip[1]", "title"=>$tooltip[0]];
+        else $base_attributes = ["type"=>"submit", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>$tooltip];
+        $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
     elseif($dropdown){
         $base_attributes = ["class"=>"dropdown-toggle", "type"=>"submit", "id"=>"dropdownMenuButton", "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false"];
@@ -42,8 +49,8 @@ if($tooltip) {
         $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
     elseif($collapse){
-        $base_attributes = ["type"=>"button", "data-toggle"=>"collapse", "data-target"=>"#id_collapse", "aria-expanded"=>"false", "aria-controls"=>"id_collapse"];
-        $compiler .= '<button class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
+        $base_attributes = ["type"=>"button", "data-toggle"=>"collapse", "data-target"=>'#'.$secondary_id, "aria-expanded"=>"false", "aria-controls"=>'#'.$secondary_id];
+        $compiler .= '<button id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</button>';
     }
     else {
         $base_attributes = ["type"=>"submit"];
@@ -66,8 +73,8 @@ if($tooltip) {
         $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
     }
     elseif($collapse){
-        $base_attributes = ["data-toggle"=>"collapse", "href"=>"#id_collapse", "role"=>"button", "aria-expanded"=>"false", "aria-controls"=>"id_collapse"];
-        $compiler .= '<a class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
+        $base_attributes = ["data-toggle"=>"collapse", "href"=>'#'.$secondary_id, "role"=>"button", "aria-expanded"=>"false", "aria-controls"=>'#'.$secondary_id];
+        $compiler .= '<a id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content.'</a>';
     }
     else {
         $base_attributes = ["href"=>"#", "role"=>"button"];
@@ -112,10 +119,8 @@ if($dropdown){
     else $compiler .= '<div class="dropdown-menu">'.$dropdown.'</div>';
 } 
 if($collapse){
-    $compiler .= '<div class="collapse" id="id_collapse">
-        <div class="card card-body">
+    $compiler .= '<div class="collapse navbar-collapse" id="'.$secondary_id.'">
         '.$collapse.'
-        </div>
     </div>';
 }
 if($dropdown){
@@ -136,7 +141,9 @@ if($dropdown){
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
     #OPTIONAL STYLE AND SCRIPT ABOVE#
-$compiler .= "</component>";
+if(!$collapse){
+    $compiler .= "</component>";
+}
     #COMPILATION ENDS#
 return $compiler;
 }

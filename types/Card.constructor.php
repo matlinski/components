@@ -4,17 +4,17 @@ function Card($input = ""){
     #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "card";
-$default = ["content"=>"<h5>Title placeholder</h5><p>Body placeholder</p><button class='btn btn-primary'>Click here</button>", "image"=>"<img src='https://picsum.photos/286/180' alt='...'>", "width"=>"18rem", "template" =>"", "attr" => "", "style"=> "", "script"=> ""];
+$default = ["content"=>"<h5>Title placeholder</h5><p>Body placeholder</p><button class='btn btn-primary'>Click here</button>", "image"=>"<img src='https://source.unsplash.com/".rand(590,610)."x250/' alt='...'>", "global"=>"col-4", "template" =>"", "attr" => "", "style"=> "", "script"=> ""];
     #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
     #DATA SUPPLY ABOVE#
-$compiler .= '<component id="'.$id.'">';
-$compiler .= '<div class="'.$base_class.'" style="width: '.$width.';">';
+$compiler .= '<component id="'.$id.'" class="d-inline-flex '.$global.'">';
+$compiler .= '<div class="'.$base_class.' '.$template.'";">';
     #COMPILATION BEGINS#               
 $compiler .= $image;
 $compiler .= '<div class="card-body">'.$content.'</div>';
 // $style .= $id.'>.card>.card-body'
-$style .= '#'.$id.'>.card>img{
+$style .= '#'.$id.'>.'.$base_class.'>img{
     width: 100%;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);

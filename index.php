@@ -16,25 +16,31 @@
 </script>
 </head>
 <body>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myID">
-  Modal trigger
-</button>
-<?= Navbar([Navs()])?></br>
-<?= Jumbotron()?></br>
-<?= Carousel()?></br>
-<?= Modal()?></br>
-<?= Alert()?></br>
-<?= Badge()?></br>
-<?= Button()?></br>
-<?= Card()?></br>
-<?= Input()?></br>
-<?= Media()?></br>
-<?= Progress()?></br>
-<?= Spinner()?></br>
-<?= Toast()?></br>
-<?= Breadcrumb()?></br>
-<?= Pagination()?>
-
+<?= Navbar([
+  'content'=>'<h1 class="navbar-brand">Brand logo</h1>'.
+  button([
+      "content"=>"<span class=' navbar-toggler-icon'></span>",
+      "template"=>"navbar-expand-lg navbar-light bg-light d-lg-none", 
+      "collapse"=>navs(["template"=>"flex-lg-row flex-column"])
+    ]),
+  "template"=>"navbar-expand-lg navbar-light bg-light"])?>
+<?= Carousel(["controls"=>true, "indicators"=>true])?></br>
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
+        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
+        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
+    </div>
+    <?= Media()?>
+    <?= Media(["reverse"=>true])?>
+    <?= Media(["template"=>"mb-5"])?>
+  </div>
+  <footer class="container-fluid py-3 mt-3 bg-dark">
+      <div class="row col-9 mx-auto d-flex justify-content-between">
+          <p class="text-light">© 2017-2018 Company, Inc. · <a class="text-info" href="#">Privacy</a> · <a class="text-info" href="#">Terms</a></p>
+          <p ><a class="text-info" href="#">Back to top</a></p>
+      </div>
+  </footer>
 </body>
 </html>
 
