@@ -21,6 +21,7 @@
 </button>
 <?= Navbar([Navs()])?></br>
 <?= Jumbotron()?></br>
+<?= Carousel()?></br>
 <?= Modal()?></br>
 <?= Alert()?></br>
 <?= Badge()?></br>

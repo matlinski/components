@@ -21,4 +21,5 @@ require_once("types/Modal.constructor.php");
 require_once("types/Jumbotron.constructor.php");
 require_once("types/Navbar.constructor.php");
 require_once("types/Navs.constructor.php");
+require_once("types/Carousel.constructor.php");
 ?>
