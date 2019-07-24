@@ -6,9 +6,7 @@ $base_class = "pagination";
 $default = ["links"=> ['#id1','#id2', '#id3'], "active"=>2, "interface"=>["previous", "next"], "attr" => "", "template" =>"justify-links-left", "style"=> "", "script"=> ""];
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $base_attributes = [];
-
-$compiler .= '<component id="'.$id.'">';
-$compiler .= '<ul class="'.$base_class.' '.$template.'" '.$attr.'>';
+$compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $links_compiler = "";
 if(is_array($links)){
     $i = 1;
@@ -40,10 +38,9 @@ if(is_array($links)){
     $links_compiler .= 'Please set the links as an array';
     $compiler .= $links_compiler;
 }
-$compiler .= "</ul>";
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-$compiler .= "</component>";
+$compiler .= "</ul>";
 return $compiler;
 }
 

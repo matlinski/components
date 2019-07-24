@@ -13,7 +13,7 @@ if($separator){
         }
     ';
 }
-$compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.$attr.'>';
+$compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $content_compiler = "";
 if(is_array($content)){
     $i = 1;

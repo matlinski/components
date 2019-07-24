@@ -9,8 +9,11 @@
                     }
                     else{
                         $attr_compiler .= " $key=\"$value\"";
-                    } 
+                    }
                 }
+                if(empty($base_attributes)){
+                    $attr_compiler .= " $key=\"$value\"";
+                } 
             }
             $attr = $attr_compiler;
         } else {

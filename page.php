@@ -8,9 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-<div class="row">
-<?= input(["style"=>"& input{background: red}"])?>
-<?= input(["style"=>"& input{background: red}"])?>
-</div>
+<?= Navbar([
+    "content"=>'<h1 class="navbar-brand">Best Trips</h1>'.button([
+        "template"=>"navbar-toggler-icon",
+        "collapse"=>navs([
+            "template"=>"flex-column"
+            ]),
+        "content"=>""
+        ])
+    ])?>
+    
+<?= Jumbotron()?>
 </body>
 </html>

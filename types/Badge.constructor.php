@@ -6,7 +6,8 @@ $base_class = "badge";
 $default = ["content"=> "Content placeholder", "tag"=>"span", "attr" => "", "template" =>"badge-primary", "style"=> "", "script"=> ""];
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 if($tag === "span"){
-$compiler .= '<span id="'.$id.'" class="'.$base_class.' '.$template.'" '.$attr.'>'.$content;
+$base_attributes =[];
+$compiler .= '<span id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content;
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
 $compiler .= '</span>';

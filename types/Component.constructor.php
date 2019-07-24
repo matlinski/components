@@ -36,6 +36,7 @@ function Component($input, $default, $base_class){
         $$key = $value;
         $output[$key] = $value;
     }
+    if(isset($trigger_id) && !empty($trigger_id)) $output["id"] = $trigger_id;
     if(is_array($style)){
         $style_compiler = "";
         foreach($style as $key => $value){

@@ -9,7 +9,6 @@ $script .= '$(\'#myModal\').on(\'shown.bs.modal\', function () {
     $(\'#myInput\').trigger(\'focus\')
   })';
 $base_attributes = ["tabindex"=>"-1", "role"=>"dialog", "aria-hidden"=>"true"];
-$compiler .= '<component id="'.$id.'">';
 $compiler .= '<div id="'.$trigger_id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= '<div class="modal-dialog" role="document">';
 $compiler .= '<div class="modal-content">';
@@ -32,11 +31,9 @@ $compiler .= '</div>';
 
 $compiler .= '</div>';
 $compiler .= '</div>';
-$compiler .= '</div>';
-$compiler .= '</div>';
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-$compiler .= "</component>";
+$compiler .= '</div>';
 return $compiler;
 }
 
