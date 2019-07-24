@@ -40,14 +40,12 @@ function Component($input, $default, $base_class){
         $style_compiler = "";
         foreach($style as $key => $value){
             $key = preg_replace("/[&]/", "", $key);
-            if(isset($collapse) && !empty($collapse)) $style_compiler .= "#".$output["id"].".{$base_class}$key{\n".$value."\n}";
-            else $style_compiler .= "#".$output["id"].">.{$base_class}$key{\n".$value."\n}";
+            $style_compiler .= "#".$output["id"].".{$base_class}$key{\n".$value."\n}";
         }
         $style = $style_compiler;
     } else {
         $style_compiler = "";
-        if(isset($collapse) && !empty($collapse)) $style = preg_replace("/[&]/", "#".$output["id"].".{$base_class}", $style);
-        else $style = preg_replace("/[&]/", "#".$output["id"].">.{$base_class}", $style);
+        $style = preg_replace("/[&]/", "#".$output["id"].".{$base_class}", $style);
         $style_compiler .= $style;
         $style = $style_compiler;
     }

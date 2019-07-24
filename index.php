@@ -12,10 +12,10 @@
     require_once("Library.php");
     ?>
     <script>
-$('body').scrollspy({ target: '#navbar-example' })
 </script>
 </head>
 <body>
+<div id="id_placeholder0" data-spy="scroll"></div>
 <?= Navbar([
   'content'=>'<h1 class="navbar-brand">Brand logo</h1>'.
   button([
@@ -26,6 +26,7 @@ $('body').scrollspy({ target: '#navbar-example' })
   "template"=>"navbar-expand-lg navbar-light bg-light"])?>
 <?= Carousel(["controls"=>true, "indicators"=>true])?></br>
 <div class="container">
+    <div id="id_placeholder1" data-spy="scroll"></div>
     <div class="row d-flex justify-content-around">
         <?= Card(["global"=>"col-lg-4 col-md-6"])?>
         <?= Card(["global"=>"col-lg-4 col-md-6"])?>
@@ -38,9 +39,10 @@ $('body').scrollspy({ target: '#navbar-example' })
   <footer class="container-fluid py-3 mt-3 bg-dark">
       <div class="row col-9 mx-auto d-flex justify-content-between">
           <p class="text-light">© 2017-2018 Company, Inc. · <a class="text-info" href="#">Privacy</a> · <a class="text-info" href="#">Terms</a></p>
-          <p ><a class="text-info" href="#">Back to top</a></p>
+          <p id="id_placeholder2" data-spy="scroll"><a class="text-info" href="#">Back to top</a></p>
       </div>
   </footer>
+  <?=Scrollspy();?>
 </body>
 </html>
 

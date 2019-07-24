@@ -1,13 +1,10 @@
 <?php
 
 function Breadcrumb($input = ""){
-    #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "breadcrumb";
 $default = ["content"=> ['<a href=\'home.html\'>home</a>', '<a href=\'library.html\'>library</a>', 'data'], "separator"=>">", "attr" => "", "template" =>"justify-content-left", "style"=> "", "script"=> ""];
-    #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
-    #DATA SUPPLY ABOVE# 
 $base_attributes = [];
 if($separator){
     $style .= '
@@ -16,8 +13,7 @@ if($separator){
         }
     ';
 }
-$compiler .= '<component id="'.$id.'">';
-$compiler .= '<ul class="'.$base_class.' '.$template.'" '.$attr.'>';
+$compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.$attr.'>';
 $content_compiler = "";
 if(is_array($content)){
     $i = 1;
@@ -31,12 +27,9 @@ if(is_array($content)){
     $content_compiler .= 'Please set the content as an array';
     $compiler .= $content_compiler;
 }
-    #COMPILATION BEGINS#
-$compiler .= "</ul>";
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-$compiler .= "</component>";
-    #COMPILATION ENDS#
+$compiler .= "</ul>";
 return $compiler;
 }
 

@@ -1,13 +1,10 @@
 <?php
 
 function Navs($input = ""){
-    #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "nav";
 $default = ["content"=> ['<a href=\'home.html\'>home</a>', '<a href=\'about.html\'>About us</a>', '<a href=\'contact.html\'>Contact</a>'],'active'=> 2, 'disabled'=> 1, "attr" => "", "template" =>"nav-tabs", "style"=> "", "script"=> ""];
-    #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
-    #DATA SUPPLY ABOVE# 
 $base_attributes = [];
 
 $compiler .= '<component id="'.$id.'">';
@@ -31,12 +28,10 @@ if(is_array($content)){
     $content_compiler .= 'Please set the content as an array';
     $compiler .= $content_compiler;
 }
-    #COMPILATION BEGINS#
 $compiler .= "</ul>";
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
 $compiler .= "</component>";
-    #COMPILATION ENDS#
 return $compiler;
 }
 

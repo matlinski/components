@@ -1,28 +1,22 @@
 <?php
 
 function Badge($input = ""){
-    #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "badge";
 $default = ["content"=> "Content placeholder", "tag"=>"span", "attr" => "", "template" =>"badge-primary", "style"=> "", "script"=> ""];
-    #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
-    #DATA SUPPLY ABOVE#
-$compiler .= '<component id="'.$id.'">';
-    #COMPILATION BEGINS#                        
 if($tag === "span"){
-$compiler .= '<span class="'.$base_class.' '.$template.'" '.$attr.'>'.$content.'</span>';
-    #SPAN TAG ABOVE#
-} elseif($tag === "a"){
-$base_attributes = ["href"=>"#"];
-$compiler .= '<a '.attr_append($attr, $base_attributes).' class="'.$base_class.' '.$template.'">'.$content.'</a>';
-    #A TAG ABOVE#
-}
+$compiler .= '<span id="'.$id.'" class="'.$base_class.' '.$template.'" '.$attr.'>'.$content;
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-    #OPTIONAL STYLE AND SCRIPT ABOVE#
-$compiler .= "</component>";
-    #COMPILATION ENDS#
+$compiler .= '</span>';
+} elseif($tag === "a"){
+$base_attributes = ["href"=>"#"];
+$compiler .= '<a id="'.$id.'" '.attr_append($attr, $base_attributes).' class="'.$base_class.' '.$template.'">'.$content;
+if($script) $compiler .= "<script>$script</script>";
+if($style) $compiler .= "<style>$style</style>";
+$compiler .= '</a>';
+}
 return $compiler;
 }
 

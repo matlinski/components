@@ -1,15 +1,11 @@
 <?php
 
 function Input($input = ""){
-    #USER INPUT ABOVE#
 $compiler = "";
 $base_class = "form-group";
 $default = ["content"=> "Value placeholder","tag"=>"input", "attr" => "", "template" =>"form-control", "label"=>"Label placeholder", "sticker"=>'<span id=\'basic-addon\'> @ </span>', "style"=> "", "script"=> ""];
-    #PRESETS ABOVE#
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
-    #DATA SUPPLY ABOVE# 
-$compiler .= '<component id="'.$id.'">';
-$compiler .= '<div class="'.$base_class.'">';
+$compiler .= '<div id="'.$id.'" style="width:auto" class="'.$base_class.'">';
 if($label){
     if(is_array($label)) $compiler .= '<label for="'.$id.'" class="'.$label[1].'">'.$label[0].'</label>';
     else $compiler .= '<label for="'.$id.'">'.$label.'</label>';
@@ -18,7 +14,7 @@ $compiler .= '<div class="input-group">';
 $base_attributes = ["type"=>"text", "placeholder"=>"example placeholder", "aria-label"=>"example", "aria-describedby"=>"basic-addon"];
 if($sticker){
     if(preg_match("/<\/span>/", $sticker)){
-        $style .= '#'.$id.'>.'.$base_class.'>.input-group>div{
+        $style .= '#'.$id.'.'.$base_class.'>.input-group>div{
             display: -ms-flexbox;
             display: flex;
             -ms-flex-align: center;
@@ -64,8 +60,7 @@ if($tag !== "input") $compiler .= "</$tag>";
 $compiler .= "</div>";
 if($script) $compiler .= "<script>$script</script>";
 if($style) $compiler .= "<style>$style</style>";
-$compiler .= "</component>";
-    #COMPILATION ENDS#
+$compiler .= "</div>";
 return $compiler;
 }
 
