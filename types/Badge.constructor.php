@@ -3,6 +3,7 @@
 function Badge($input = ""){
 $compiler = "";
 $base_class = "badge";
+
 $default = [
                 "content"   =>  "Content placeholder",
                 "tag"       =>  "span",
@@ -15,12 +16,15 @@ $default = [
 foreach(Component($input, $default, $base_class) as $key => $value){
     $$key = $value;
 }
+
 if($tag === "span"){
     $base_attributes =[];
     $compiler .= '<span id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content;
+
     if($script){
         $compiler .= "<script>$script</script>";  
     }
+
     if($style){
         $compiler .= "<style>$style</style>";  
     } 
@@ -29,9 +33,11 @@ if($tag === "span"){
 } elseif($tag === "a") {
     $base_attributes = ["href"=>"#"];
     $compiler .= '<a id="'.$id.'" '.attr_append($attr, $base_attributes).' class="'.$base_class.' '.$template.'">'.$content;
+
     if($script){
         $compiler .= "<script>$script</script>";
     }
+    
     if($style){
         $compiler .= "<style>$style</style>"; 
     }

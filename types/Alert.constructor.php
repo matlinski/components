@@ -3,6 +3,7 @@
 function Alert($input = ""){
 $compiler = "";
 $base_class = "alert";
+
 $default = [
                 "content"   =>      "Content placeholder",
                 "tag"       =>      "div",
@@ -20,6 +21,7 @@ foreach(Component($input, $default, $base_class) as $key => $value){
 $base_attributes = [
                         "role"=>"alert"
                     ];
+
 $compiler .= '<'.$tag.' id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= $content;
 
@@ -28,9 +30,11 @@ if($dismisable){
     <span aria-hidden="true">&times;</span>
     </button>';
 }
+
 if($script){
     $compiler .= "<script>$script</script>";
 }
+
 if($style){
     $compiler .= "<style>$style</style>";
 }

@@ -2,6 +2,7 @@
 function Card($input = ""){
 $compiler = "";
 $base_class = "card";
+
 $default = [
                 "content"   =>  "<h5>Title placeholder</h5><p>Body placeholder</p><button class='btn btn-primary'>Click here</button>",
                 "image"     =>  '<img src=\'https://source.unsplash.com/'.rand(590,610).'x250/\' alt=\'...\'>',
@@ -22,6 +23,7 @@ $compiler .= '<div class="card-body">'.$content.'</div>';
 if($script){
     $compiler .= "<script>$script</script>";
 } 
+
 if($style){
     $compiler .= "<style>$style</style>";
 } 

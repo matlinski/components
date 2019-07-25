@@ -2,6 +2,7 @@
 function Carousel($input = ""){
 $compiler = "";
 $base_class = "carousel";
+
 $default = [
                 "content"       => 
                     [
@@ -25,7 +26,7 @@ foreach(Component($input, $default, $base_class) as $key => $value){
 }
 
 $base_attributes =  [
-                        "data-ride"=>"carousel"
+                        "data-ride" =>  "carousel"
                     ];
 
 $compiler .= '<div id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
@@ -44,20 +45,21 @@ if(is_array($content)){
 
             if(($key+1) === $active ){
                 $compiler .= '<li data-target="#'.$id.'" data-slide-to="'.$key.'" class="active"></li>';
-            }
-            else{
+
+            }   else    {
                 $compiler .= '<li data-target="#'.$id.'" data-slide-to="'.$key.'"></li>';
             } 
         }
         $compiler .= '</ol>';
     }
     $content_compiler = '';
+
     foreach($content as $key => $value){
 
         if(($key+1) === $active ){
             $content_compiler .= '<div class="carousel-item active" '.$set_interval.'>';
-        }
-        else{
+
+        }   else    {
             $content_compiler .= '<div class="carousel-item" '.$set_interval.'>';
         } 
         $content_compiler .= $value;
@@ -66,23 +68,27 @@ if(is_array($content)){
     $compiler .= $content_compiler;
 
     if($controls){
-        $compiler .= '<a class="carousel-control-prev" href="#'.$id.'" role="button" data-slide="prev">
+        $compiler .= 
+    '<a class="carousel-control-prev" href="#'.$id.'" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#'.$id.'" role="button" data-slide="next">
+    </a>
+    <a class="carousel-control-next" href="#'.$id.'" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
-      </a>';
+    </a>';
     }
+
 } else {
     $content_compiler .= 'Please set the content as an array';
     $compiler .= $content_compiler;
 }
 $compiler .= "</div>";
+
 if($script){
     $compiler .= "<script>$script</script>";
 } 
+
 if($style){
     $compiler .= "<style>$style</style>";
 } 
