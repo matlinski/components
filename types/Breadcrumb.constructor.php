@@ -40,9 +40,8 @@ if(is_array($content)){
 
         if($i === (count($content)) ){
             $content_compiler .= '<li class="breadcrumb-item active" aria-current="page">'.$value.'</li>';
-        }
-
-        else{
+			
+        }	else	{
             $content_compiler .= '<li class="breadcrumb-item">'.$value.'</li>';
         } 
         $i++;
