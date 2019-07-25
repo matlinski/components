@@ -3,7 +3,25 @@
 function Pagination($input = ""){
 $compiler = "";
 $base_class = "pagination";
-$default = ["links"=> ['#id1','#id2', '#id3'], "active"=>2, "interface"=>["previous", "next"], "attr" => "", "template" =>"justify-links-left", "style"=> "", "script"=> ""];
+$default = [
+                "links"     => 
+                    [
+                        '#id1',
+                        '#id2',
+                        '#id3'
+                    ],
+                "active"    =>  2,
+                "interface" =>  
+                    [
+                        "previous",
+                        "next"
+                    ],
+                "attr"      => "",
+                "template"  =>"justify-links-left",
+                "style"     => "",
+                "script"    => ""
+            ];
+            
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $base_attributes = [];
 $compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';

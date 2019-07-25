@@ -3,7 +3,19 @@
 function Scrollspy($input = ""){
 $compiler = "";
 $base_class = "list-group";
-$default = ["content"=> ['Top', 'Middle', 'Bottom'],"id_base"=>"id_placeholder", "attr" => "", "template" =>"navbar-light bg-light col-2", "style"=> "&{position: fixed; top: 50%; transform: translateY(-50%)}", "script"=> ""];
+$default = [
+              "content"   => 
+                    [
+                      'Top',
+                      'Middle',
+                      'Bottom'
+                    ],
+              "id_base"   =>  "id_placeholder",
+              "attr"      =>  "",
+              "template"  =>  "navbar-light bg-light col-2",
+              "style"     =>  "&{position: fixed; top: 50%; transform: translateY(-50%)}",
+              "script"    =>  ""
+            ];
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $script .= '$(\'body\').scrollspy({ target: \'#'.$id.'\'})';
 $base_attributes = [];

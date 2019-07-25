@@ -3,7 +3,16 @@
 function Progress($input = ""){
 $compiler = "";
 $base_class = "progress";
-$default = ["progress" => 25,"min"=> 0, "max"=>100, "template" =>"bg-success","attr"=>"", "style"=> "", "script"=> ""];
+$default = [
+                "progress"  =>  25,
+                "min"       =>  0,
+                "max"       =>  100,
+                "template"  =>  "bg-success",
+                "attr"      =>  "",
+                "style"     =>  "",
+                "script"    =>  ""
+            ];
+            
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $base_attributes = [];
 $compiler .= '<div id="'.$id.'" class="'.$base_class.'" style="width: '.$max.'%" '.attr_append($attr, $base_attributes).'>';

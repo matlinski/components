@@ -3,7 +3,16 @@
 function Modal($input = ""){
 $compiler = "";
 $base_class = "modal";
-$default = ["header"=> '<h5 class=\'modal-title\'>Header placeholder</h5>', "body"=> '<p>Body placeholder</p>', "footer"=> '<button class=\'btn btn-primary\'>Take action!</button>',"trigger_id"=>"myID", "attr" => '', "template" =>"fade", "style"=> "", "script"=> ""];
+$default = [
+            "header"    =>  '<h5 class=\'modal-title\'>Header placeholder</h5>',
+            "body"      =>  '<p>Body placeholder</p>',
+            "footer"    =>  '<button class=\'btn btn-primary\'>Take action!</button>',
+            "trigger_id"=>  "myID",
+            "attr"      =>  '',
+            "template"  =>  "fade",
+            "style"     =>  "",
+            "script"    =>  ""
+          ];
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $script .= '$(\'#myModal\').on(\'shown.bs.modal\', function () {
     $(\'#myInput\').trigger(\'focus\')

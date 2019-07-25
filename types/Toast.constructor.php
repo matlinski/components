@@ -3,7 +3,15 @@
 function Toast($input = ""){
 $compiler = "";
 $base_class = "toast";
-$default = ["header"=> '<img src=\'https://picsum.photos/20/20\' class=\'rounded mr-2\' alt=\'Alt placeholder\'><strong class=\'mr-auto\'>Title example</strong><small>11 mins ago</small>', "body"=> 'Body placeholder', "attr" => "", "template" =>"", "style"=> "", "script"=> ""];
+$default = [
+              "header"    =>  '<img src=\'https://picsum.photos/20/20\' class=\'rounded mr-2\' alt=\'Alt placeholder\'><strong class=\'mr-auto\'>Title example</strong><small>11 mins ago</small>',
+              "body"      =>  'Body placeholder',
+              "attr"      =>  "",
+              "template"  =>  "",
+              "style"     =>  "",
+              "script"    =>  ""
+          ];
+
 foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
 $script .= '$(document).ready(function(){
   $(\'.toast\').toast(\'show\');

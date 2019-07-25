@@ -5,9 +5,10 @@
             foreach($attr as $key => $value){
                 foreach ($base_attributes as $k => $v) {
                     if($key === $k) {
-                        $attr_compiler .= " $key=\"$value\"";
+                        $attr_compiler .= " $k=\"$value\"";
                     }
                     else{
+                        $attr_compiler .= " $k=\"$v\"";
                         $attr_compiler .= " $key=\"$value\"";
                     }
                 }

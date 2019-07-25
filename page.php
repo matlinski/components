@@ -8,16 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-<?= Navbar([
-    "content"=>'<h1 class="navbar-brand">Best Trips</h1>'.button([
-        "template"=>"navbar-toggler-icon",
-        "collapse"=>navs([
-            "template"=>"flex-column"
-            ]),
-        "content"=>""
-        ])
-    ])?>
-    
+<?= Alert()?>
+<?= Badge()?>
+<?= BreadCrumb()?>
+<?= Button()?>
+<?= Card()?>
+<?= Carousel()?>
+<?= Input()?>
 <?= Jumbotron()?>
+<?= Media()?>
+<?= Modal()?>
+<?= Navbar()?>
+<?= Navs()?>
+<?= Pagination()?>
+<?= Progress()?>
+<?= Scrollspy()?>
+<?= Spinner()?>
+<?= Toast()?>
+</div>
 </body>
 </html>

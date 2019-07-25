@@ -3,15 +3,35 @@
 function Input($input = ""){
 $compiler = "";
 $base_class = "form-group";
-$default = ["content"=> "Value placeholder","tag"=>"input", "attr" => "", "template" =>"form-control", "label"=>"Label placeholder", "sticker"=>'<span id=\'basic-addon\'> @ </span>', "style"=> "", "script"=> ""];
-foreach(Component($input, $default, $base_class) as $key => $value) $$key = $value;
-$compiler .= '<div id="'.$id.'" style="width:auto" class="'.$base_class.'">';
+$default = [
+                "content"   =>  "Value placeholder",
+                "tag"       =>  "input",
+                "attr"      =>  "",
+                "template"  =>  "form-control",
+                "label"     =>  "Label placeholder",
+                "sticker"   =>  '<span id=\'basic-addon\'> @ </span>',
+                "style"     =>  "",
+                "script"    =>  ""
+            ];
+
+foreach(Component($input, $default, $base_class) as $key => $value){
+    $$key = $value;
+}
+
+$compiler .= '<div id="'.$id.'" style="width:auto" class="'.$base_class.' '.$template.'">';
+
 if($label){
     if(is_array($label)) $compiler .= '<label for="'.$id.'" class="'.$label[1].'">'.$label[0].'</label>';
     else $compiler .= '<label for="'.$id.'">'.$label.'</label>';
 }
-$compiler .= '<div class="input-group">';
-$base_attributes = ["type"=>"text", "placeholder"=>"example placeholder", "aria-label"=>"example", "aria-describedby"=>"basic-addon"];
+$compiler .= '<div class="input-group ">';
+$base_attributes =  [
+                        "type"=>"text",
+                        "placeholder"=>"example placeholder",
+                        "aria-label"=>"example",
+                        "aria-describedby"=>"basic-addon"
+                    ];
+
 if($sticker){
     if(preg_match("/<\/span>/", $sticker)){
         $style .= '#'.$id.'.'.$base_class.'>.input-group>div{
@@ -34,9 +54,13 @@ if($sticker){
     }
     if(is_array($sticker)){
         if($sticker[1]=== "append"){
-           if($tag === "input") $base_attributes["value"] = $content;
+           if($tag === "input"){
+               $base_attributes["value"] = $content;
+           } 
            $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';  
-           if($tag !== "input") $compiler .= $content;
+           if($tag !== "input"){
+               $compiler .= $content;
+           } 
         }
         $compiler .= '<div class="input-group-'.$sticker[1].'">';
         $compiler .= $sticker[0];
@@ -46,20 +70,35 @@ if($sticker){
         $compiler .= $sticker;
     } 
     $compiler .= '</div>';
-    if($tag === "input") $base_attributes["value"] = $content;
+    if($tag === "input"){
+        $base_attributes["value"] = $content;
+    } 
     $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';
-    if($tag !== "input") $compiler .= $content;
+
+    if($tag !== "input"){
+        $compiler .= $content;
+    } 
 } 
 else{
-    if($tag === "input") $base_attributes["value"] = $content;
+    if($tag === "input"){
+        $base_attributes["value"] = $content;
+    } 
     $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';
-    if($tag !== "input") $compiler .= $content;
+    if($tag !== "input"){
+        $compiler .= $content;
+    } 
 }
 
-if($tag !== "input") $compiler .= "</$tag>";
+if($tag !== "input"){
+    $compiler .= "</$tag>";
+} 
 $compiler .= "</div>";
-if($script) $compiler .= "<script>$script</script>";
-if($style) $compiler .= "<style>$style</style>";
+if($script){
+    $compiler .= "<script>$script</script>";
+} 
+if($style){
+    $compiler .= "<style>$style</style>";
+} 
 $compiler .= "</div>";
 return $compiler;
 }

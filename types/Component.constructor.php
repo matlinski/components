@@ -4,7 +4,7 @@ function Component($input, $default, $base_class){
     if(json_last_error() != JSON_ERROR_NONE && !is_array($input)){
         $settings = $default;
         if($input)$settings["content"] = $input;
-        echo "<script>".info($settings)."</script>";
+        echo "<script>console.log(' ####################');console.log(' #### ".strtoupper($base_class)." ####".str_repeat("#", (10 - strlen($base_class)))."');console.log(' ####################');".info($settings)."</script>";
     }  elseif(is_array($input)){
         $output = [];
         $settings = $default;
