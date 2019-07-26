@@ -12,31 +12,9 @@ $default = [
                 "style"     =>  "",
                 "script"    =>  ""
             ];
-            
-foreach(Component($input, $default, $base_class) as $key => $value) {
-    $$key = $value;
-}
-$compiler = "";
-$base_attributes = [];
-$compiler .= 
-        '<div id="'.$id.'" class="'.$base_class.'" style="width: '.
-                $max.'%" '.attr_append($attr, $base_attributes).'>';
 
-$compiler .= 
-        '<div class="progress-bar '.$template.'" role="progressbar"
-        aria-valuenow="'.$progress.'" aria-valuemin="'.$min.'"
-        aria-valuemax="'.$max.'" style="width: 
-        '.($progress/$max*100).'%">'.$progress.'%</div>';
-
-if ($script) {
-        $compiler .= "<script>$script</script>";
-} 
-
-if ($style) {
-        $compiler .= "<style>$style</style>";
-} 
-$compiler .= '</div>';
-return $compiler;
+return Compiler($base_class, Component($input, $default, $base_class));
+           
 }
 
 ?>

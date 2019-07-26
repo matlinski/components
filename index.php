@@ -15,34 +15,16 @@
 </script>
 </head>
 <body>
-<div id="id_placeholder0" data-spy="scroll"></div>
-<?= Navbar([
-  'content'=>'<h1 class="navbar-brand">Brand logo</h1>'.
-  button([
-      "content"=>"<span class=' navbar-toggler-icon'></span>",
-      "template"=>"navbar-expand-lg navbar-light bg-light d-lg-none", 
-      "collapse"=>navs(["template"=>"flex-lg-row flex-column"])
-    ]),
-  "template"=>"navbar-expand-lg navbar-light bg-light"])?>
-<?= Carousel(["controls"=>true, "indicators"=>true])?></br>
-<div class="container">
-    <div id="id_placeholder1" data-spy="scroll"></div>
-    <div class="row d-flex justify-content-around">
-        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
-        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
-        <?= Card(["global"=>"col-lg-4 col-md-6"])?>
-    </div>
-    <?= Media()?>
-    <?= Media(["reverse"=>true])?>
-    <?= Media(["template"=>"mb-5"])?>
-  </div>
-  <footer class="container-fluid py-3 mt-3 bg-dark">
-      <div class="row col-9 mx-auto d-flex justify-content-between">
-          <p class="text-light">© 2017-2018 Company, Inc. · <a class="text-info" href="#">Privacy</a> · <a class="text-info" href="#">Terms</a></p>
-          <p id="id_placeholder2" data-spy="scroll"><a class="text-info" href="#">Back to top</a></p>
-      </div>
-  </footer>
-  <?=Scrollspy();?>
+<?php
+for($i = 0; $i < 10000; $i++){
+  echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+}
+?>
 </body>
 </html>
 

@@ -13,26 +13,7 @@ $default = [
             "script"    =>  ""
         ];
 
-foreach(Component($input, $default, $base_class) as $key => $value) {
-    $$key = $value;
-}
-$compiler = "";
-$base_attributes =[];
-$compiler .= 
-        '<nav id="'.$id.'" class="'.$base_class.' '.$template.
-                '" '.attr_append($attr, $base_attributes).'>';
-                
-$compiler .= $content;
-
-if ($script) {
-        $compiler .= "<script>$script</script>";
-} 
-
-if ($style) {
-        $compiler .= "<style>$style</style>";
-} 
-$compiler .= "</nav>";
-return $compiler;
+return Compiler($base_class, Component($input, $default, $base_class));
 }
 
 ?>

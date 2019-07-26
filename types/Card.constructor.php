@@ -8,9 +8,9 @@ $default = [
                                 "<button class='btn btn-primary'>Click here</button>",
 
                 "image"     =>  '<img src=\'https://source.unsplash.com/'.
-                                    rand(590,610).'x250/\' alt=\'...\'>',
+                                    rand(590,610).'x350/\' alt=\'...\'>',
                                     
-                "template"  =>  "",
+                "template"  =>  "col-3",
                 "attr"      =>  "",
                 "style"     =>  "&>img{".
                                     "width: 100%;".
@@ -20,27 +20,7 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value) {
-    $$key = $value;
-}
-$compiler = "";
-
-$compiler .= '<div id="'.$id.'" class="'.$base_class.' '.$template.'";">';
-$compiler .= $image;
-$compiler .= 
-    '<div class="card-body">'.
-        $content.
-    '</div>';
-
-if ($script) {
-    $compiler .= "<script>$script</script>";
-} 
-
-if ($style) {
-    $compiler .= "<style>$style</style>";
-} 
-$compiler .= "</div>";
-return $compiler;
+return Compiler($base_class, Component($input, $default, $base_class));
 }
 
 ?>

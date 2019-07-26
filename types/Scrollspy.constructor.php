@@ -1,7 +1,7 @@
 <?php
 
 function Scrollspy($input = "") {
-$base_class = "list-group";
+$base_class = "scrollspy";
 
 $default = [
               "content"   => 
@@ -14,44 +14,17 @@ $default = [
               "attr"      =>  "",
               "template"  =>  "navbar-light bg-light col-2",
               "style"     =>  "&{".
-                                  "position: fixed; top: 50%; transform: translateY(-50%)".
+                                  "position: fixed;".
+                                  "top: 50%;".
+                                  "right: 0%;".
+                                  "z-index: 999;".
+                                  "transform: translateY(-50%)".
                               "}",
               "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value) {
-    $$key = $value;
-}
-$script .= '$(\'body\').scrollspy({ target: \'#'.$id.'\'})';
-$compiler = "";
-$base_attributes = [];
-$compiler .= 
-  '<nav id="'.$id.'" class="'.$base_class.' '.$template.
-    '" '.attr_append($attr, $base_attributes).'>';
+return Compiler($base_class, Component($input, $default, $base_class));
 
-if (is_array($content)) {
-
-  foreach($content as $key => $value) {
-    $compiler .= 
-      '<a class="list-group-item list-group-item-action" href="#'.$reference_id.$key.'">'.
-          $value.
-      '</a>';
-  }
-  
-} else  {
-  $content_compiler .= 'Please set the content as an array';
-  $compiler .= $content_compiler;
-}
-
-if ($script) {
-    $compiler .= "<script>$script</script>";
-} 
-
-if ($style) {
-    $compiler .= "<style>$style</style>";
-} 
-$compiler .= "</nav>";
-return $compiler;
 }
 
 ?>

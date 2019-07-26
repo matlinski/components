@@ -11,31 +11,8 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value) {
-    $$key = $value;
-}
-    $base_attributes =  [
-                            "role"=>"status"
-                        ];
- 
-$compiler = "";                                     
-$compiler .= 
-  '<div id="'.$id.'" class="spinner '.$template.
-  '" style="width:'.$radius.'; height:'.$radius.
-  '" '.attr_append($attr, $base_attributes).'>
-      <span class="sr-only">
-        Loading...
-      </span>';
+return Compiler($base_class, Component($input, $default, $base_class));
 
-if ($script) {
-  $compiler .= "<script>$script</script>";  
-} 
-
-if ($style) {
-  $compiler .= "<style>$style</style>";  
-} 
-$compiler .= '</div>';
-return $compiler;
 }
 
 ?>
