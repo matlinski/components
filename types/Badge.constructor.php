@@ -1,7 +1,6 @@
 <?php
 
-function Badge($input = ""){
-$compiler = "";
+function Badge($input = "") {
 $base_class = "badge";
 
 $default = [
@@ -13,32 +12,40 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
+$compiler = "";
 
-if($tag === "span"){
+if ($tag === "span") {
     $base_attributes =[];
-    $compiler .= '<span id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>'.$content;
+    
+    $compiler .= 
+        '<span id="'.$id.'" class="'.
+        $base_class.' '.$template.'" '.
+        attr_append($attr, $base_attributes).'>'.$content;
 
-    if($script){
+    if ($script) {
         $compiler .= "<script>$script</script>";  
     }
 
-    if($style){
+    if ($style) {
         $compiler .= "<style>$style</style>";  
     } 
     $compiler .= '</span>';
 
-} elseif($tag === "a") {
+} elseif ($tag === "a") {
     $base_attributes = ["href"=>"#"];
-    $compiler .= '<a id="'.$id.'" '.attr_append($attr, $base_attributes).' class="'.$base_class.' '.$template.'">'.$content;
 
-    if($script){
+    $compiler .= 
+        '<a id="'.$id.'" '.attr_append($attr, $base_attributes).
+            ' class="'.$base_class.' '.$template.'">'.$content;
+
+    if ($script) {
         $compiler .= "<script>$script</script>";
     }
     
-    if($style){
+    if ($style) {
         $compiler .= "<style>$style</style>"; 
     }
      

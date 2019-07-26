@@ -1,14 +1,14 @@
 <?php
-    function attr_append($attr, $base_attributes){
+    function attr_append($attr, $base_attributes) {
         $attr_compiler = "";
 
-        if(is_array($attr)){
+        if (is_array($attr)) {
 
-            foreach($attr as $key => $value){
+            foreach($attr as $key => $value) {
 
                 foreach ($base_attributes as $k => $v) {
 
-                    if($key === $k) {
+                    if ($key === $k) {
                         $attr_compiler .= " $k=\"$value\"";
                         
                     }   else    {
@@ -16,7 +16,7 @@
                         $attr_compiler .= " $key=\"$value\"";
                     }
                 }
-                if(empty($base_attributes)){
+                if (empty($base_attributes)) {
                     $attr_compiler .= " $key=\"$value\"";
                 } 
             }
@@ -29,7 +29,7 @@
 
                 foreach ($base_attributes as $k => $v) {
 
-                    if(preg_match("/$k([^']*?)=([^']*?)\"([^']*?)\"/", $value)){
+                    if (preg_match("/$k([^']*?)=([^']*?)\"([^']*?)\"/", $value)) {
 
                         $attr_string = preg_grep("/$k([^']*?)=([^']*?)\"([^']*?)\"/", [$value]);
                         $value = preg_replace("/$k([^']*?)=([^']*?)\"([^']*?)\"/", "", $value);

@@ -1,7 +1,6 @@
 <?php
 
-function Spinner($input = ""){
-$compiler = "";
+function Spinner($input = "") {
 $base_class = "spinner";
 
 $default = [
@@ -12,21 +11,27 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
     $base_attributes =  [
                             "role"=>"status"
                         ];
-                                      
-$compiler .= '<div id="'.$id.'" class="spinner '.$template.'" style="width:'.$radius.'; height:'.$radius.'" '.attr_append($attr, $base_attributes).'>
-                <span class="sr-only">Loading...</span>';
+ 
+$compiler = "";                                     
+$compiler .= 
+  '<div id="'.$id.'" class="spinner '.$template.
+  '" style="width:'.$radius.'; height:'.$radius.
+  '" '.attr_append($attr, $base_attributes).'>
+      <span class="sr-only">
+        Loading...
+      </span>';
 
-if($script){
+if ($script) {
   $compiler .= "<script>$script</script>";  
 } 
 
-if($style){
+if ($style) {
   $compiler .= "<style>$style</style>";  
 } 
 $compiler .= '</div>';

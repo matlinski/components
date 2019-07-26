@@ -1,7 +1,6 @@
 <?php
 
-function Input($input = ""){
-$compiler = "";
+function Input($input = "") {
 $base_class = "form-group";
 
 $default = [
@@ -15,19 +14,25 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
+$compiler = "";
 
 $compiler .= '<div id="'.$id.'" style="width:auto" class="'.$base_class.' '.$template.'">';
 
-if($label){
+if ($label) {
 
-    if(is_array($label)){
-        $compiler .= '<label for="'.$id.'" class="'.$label[1].'">'.$label[0].'</label>';
+    if (is_array($label)) {
+        $compiler .= 
+            '<label for="'.$id.'" class="'.$label[1].'">'.
+                $label[0].
+            '</label>';
 
     }   else    {
-        $compiler .= '<label for="'.$id.'">'.$label.'</label>';
+        $compiler .= '<label for="'.$id.'">'.
+                        $label.
+                     '</label>';
     } 
 }
 $compiler .= '<div class="input-group ">';
@@ -39,9 +44,9 @@ $base_attributes =  [
                         "aria-describedby"  =>  "basic-addon"
                     ];
 
-if($sticker){
+if ($sticker) {
 
-    if(preg_match("/<\/span>/", $sticker)){
+    if (preg_match("/<\/span>/", $sticker)) {
         $style .= '#'.$id.'.'.$base_class.'>.input-group>div{
             display: -ms-flexbox;
             display: flex;
@@ -61,16 +66,18 @@ if($sticker){
         }';
     }
 
-    if(is_array($sticker)){
+    if (is_array($sticker)) {
 
-        if($sticker[1]=== "append"){
+        if ($sticker[1]=== "append") {
 
-           if($tag === "input"){
+           if ($tag === "input") {
                $base_attributes["value"] = $content;
            } 
-           $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';
+           $compiler .= 
+            '<'.$tag.' class="form-control" '.
+            attr_append($attr, $base_attributes).'>';
 
-           if($tag !== "input"){
+           if ($tag !== "input") {
                $compiler .= $content;
            } 
         }
@@ -83,37 +90,41 @@ if($sticker){
     } 
     $compiler .= '</div>';
 
-    if($tag === "input"){
+    if ($tag === "input") {
         $base_attributes["value"] = $content;
     } 
-    $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';
+    $compiler .= 
+        '<'.$tag.' class="form-control" '.
+        attr_append($attr, $base_attributes).'>';
 
-    if($tag !== "input"){
+    if ($tag !== "input") {
         $compiler .= $content;
     } 
 
 }   else    {
 
-    if($tag === "input"){
+    if ($tag === "input") {
         $base_attributes["value"] = $content;
     } 
-    $compiler .= '<'.$tag.' class="form-control" '.attr_append($attr, $base_attributes).'>';
+    $compiler .= 
+        '<'.$tag.' class="form-control" '.
+        attr_append($attr, $base_attributes).'>';
 
-    if($tag !== "input"){
+    if ($tag !== "input") {
         $compiler .= $content;
     } 
 }
 
-if($tag !== "input"){
+if ($tag !== "input") {
     $compiler .= "</$tag>";
 } 
 $compiler .= "</div>";
 
-if($script){
+if ($script) {
     $compiler .= "<script>$script</script>";
 } 
 
-if($style){
+if ($style) {
     $compiler .= "<style>$style</style>";
 } 
 $compiler .= "</div>";

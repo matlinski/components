@@ -1,15 +1,31 @@
 <?php
-function Carousel($input = ""){
-$compiler = "";
+function Carousel($input = "") {
 $base_class = "carousel";
 
 $default = [
                 "content"       => 
+                
                     [
-                    '<div><p class=\'display-4\'>First caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2501x300?moon\' alt=\'...\'>',
-                    '<div><p class=\'display-4\'>Second caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2500x300?moon\' alt=\'...\'>',
-                    '<div><p class=\'display-4\'>Third caption</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p></div><img src=\'https://source.unsplash.com/2499x300?moon\' alt=\'...\'>'
+                    '<div>'.
+                        '<p class=\'display-4\'>First caption</p>'.
+                        '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p>'.
+                    '</div>'.
+                    '<img src=\'https://source.unsplash.com/2501x300?moon\' alt=\'...\'>',
+
+                    '<div>'.
+                        '<p class=\'display-4\'>First caption</p>'.
+                        '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p>'.
+                    '</div>'.
+                    '<img src=\'https://source.unsplash.com/2501x300?moon\' alt=\'...\'>',
+
+                    '<div>'.
+                        '<p class=\'display-4\'>First caption</p>'.
+                        '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error est ipsam, deleniti quo quos illo voluptatibus consequuntur magni quae eaque deserunt neque explicabo consectetur minima autem placeat suscipit odit inventore!</p>'.
+                    '</div>'.
+                    '<img src=\'https://source.unsplash.com/2501x300?moon\' alt=\'...\'>'
+
                     ],
+
                 'active'        =>  2,
                 "caption"       =>  true,
                 "controls"      =>  false,
@@ -17,46 +33,62 @@ $default = [
                 "attr"          =>  "",
                 "template"      =>  "slide",
                 'interval'      =>  5000,
-                "style"         =>  '&>.carousel-inner>.carousel-item>:not(img){position: absolute;right: 15%;bottom: 20px;left: 15%;z-index: 10;padding-top: 20px;padding-bottom: 20px;color: #fff;text-align: center; }',
+                "style"         =>  '&>.carousel-inner>.carousel-item>:not(img) {'.
+                                        'position: absolute;'.
+                                        'right: 15%;'.
+                                        'bottom: 20px;'.
+                                        'left: 15%;'.
+                                        'z-index: 10;'.
+                                        'padding-top: 20px;'.
+                                        'padding-bottom: 20px;'.
+                                        'color: #fff;'.
+                                        'text-align: center;'.
+                                    '}',
                 "script"        =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
+$compiler = "";
 
 $base_attributes =  [
                         "data-ride" =>  "carousel"
                     ];
 
-$compiler .= '<div id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
+$compiler .= 
+    '<div id="'.$id.'" class="'.$base_class.' '.$template.
+        '" '.attr_append($attr, $base_attributes).'>';
+        
 $compiler .= '<div class="carousel-inner">';
 
-if(is_int($interval)){
+if (is_int($interval)) {
     $set_interval = 'data-interval="'.$interval.'"';
 }
 
-if(is_array($content)){
+if (is_array($content)) {
 
-    if($indicators){
+    if ($indicators) {
         $compiler .= '<ol class="carousel-indicators">';
 
-        foreach($content as $key => $value){
+        foreach($content as $key => $value) {
 
-            if(($key+1) === $active ){
-                $compiler .= '<li data-target="#'.$id.'" data-slide-to="'.$key.'" class="active"></li>';
+            if (($key+1) === $active ) {
+                $compiler .= 
+                    '<li data-target="#'.$id.'" data-slide-to="'.$key.'" class="active"></li>';
 
             }   else    {
-                $compiler .= '<li data-target="#'.$id.'" data-slide-to="'.$key.'"></li>';
+                $compiler .= 
+                    '<li data-target="#'.$id.'" data-slide-to="'.$key.'"></li>';
             } 
         }
         $compiler .= '</ol>';
     }
     $content_compiler = '';
 
-    foreach($content as $key => $value){
+    foreach($content as $key => $value) {
 
-        if(($key+1) === $active ){
+        if (($key+1) === $active ) {
             $content_compiler .= '<div class="carousel-item active" '.$set_interval.'>';
 
         }   else    {
@@ -67,7 +99,7 @@ if(is_array($content)){
     }
     $compiler .= $content_compiler;
 
-    if($controls){
+    if ($controls) {
         $compiler .= 
     '<a class="carousel-control-prev" href="#'.$id.'" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -85,11 +117,11 @@ if(is_array($content)){
 }
 $compiler .= "</div>";
 
-if($script){
+if ($script) {
     $compiler .= "<script>$script</script>";
 } 
 
-if($style){
+if ($style) {
     $compiler .= "<style>$style</style>";
 } 
 $compiler .= "</div>";

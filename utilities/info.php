@@ -1,25 +1,23 @@
 <?php
-function info($settings =false){
+function info($settings =false) {
     $compiler = "";
     $compiler2 = "";
     $compiler .= "console.log('The default options for this components are: ');\n
     var settings = {};\n";
 
-    if(is_array($settings)){
+    if (is_array($settings)) {
 
         foreach ($settings as $key => $value) {
 
-            if(is_array($value)){
+            if (is_array($value)) {
                 $compiler .= "settings.".$key." = "."{};\n";
 
-                foreach($value as $k2 => $v2){
+                foreach($value as $k2 => $v2) {
                     $compiler .= "settings.".$key."[".$k2."] = "."\"$v2\";\n";
                 }
-            }
+            }   else  {
 
-            if(!is_array($value)){
-
-                if(empty($value)){
+                if (empty($value)) {
                     $compiler .= 'settings.'.$key.' = "/* '.$key.' goes here */";';
                     
                 }   else    {
@@ -29,7 +27,6 @@ function info($settings =false){
         }
     }
     $compiler .= "console.table(settings);\n";
-    $output = $compiler;
-    return $output;
+    return $compiler;
 }
 ?>

@@ -1,41 +1,41 @@
 <?php
 
-function Alert($input = ""){
-$compiler = "";
+function Alert($input = "") {
 $base_class = "alert";
 
 $default = [
-                "content"   =>      "Content placeholder",
-                "tag"       =>      "div",
-                "attr"      =>      "",
-                "template"  =>      "alert-warning fade show",
-                "dismisable"=>      true,
-                "style"     =>      "",
-                "script"    =>      ""
+                "content"   =>   "Content placeholder",
+                "tag"       =>   "div",
+                "attr"      =>   "",
+                "template"  =>   "alert-warning fade show",
+                "dismisable"=>   true,
+                "style"     =>   "",
+                "script"    =>   ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
 
+$compiler = "";
 $base_attributes = [
-                        "role"=>"alert"
+                        "role"  =>  "alert"
                     ];
-
 $compiler .= '<'.$tag.' id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
 $compiler .= $content;
 
-if($dismisable){
-    $compiler .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>';
+if ($dismisable) {
+    $compiler .= 
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>';
 }
 
-if($script){
+if ($script) {
     $compiler .= "<script>$script</script>";
 }
 
-if($style){
+if ($style) {
     $compiler .= "<style>$style</style>";
 }
 $compiler .= "</$tag>";

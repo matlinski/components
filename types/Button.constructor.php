@@ -1,6 +1,5 @@
 <?php
-function Button($input = ""){
-$compiler = "";
+function Button($input = "") {
 $base_class = "btn";
 
 $default = [
@@ -16,35 +15,43 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
 
-if($collapse){
+if ($collapse) {
     $secondary_id = 'trigger';
-    $id_supply = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'q', 'w', 'e', 'r', 't', 'y', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+    $id_supply = ['0', '1', '2', '3', '4', '5', '6', '7', '8',
+    '9', 'q', 'w', 'e', 'r', 't', 'y', 'i', 'o', 'p', 'a', 's',
+    'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b',
+    'n', 'm', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C',
+    'V', 'B', 'N', 'M'];
 
-    for($i = 0; $i < 5; $i++){
+    for($i = 0; $i < 5; $i++) {
         $secondary_id .= $id_supply[rand(0, (count($id_supply) - 1) )];
     }
 }
 
-if($popover){
-    $script .= '$(function () {
+if ($popover) {
+    $script .= 
+    '$(function () {
         $(\'[data-toggle="popover"]\').popover()
-      })';
+    })';
 }
 
-if($tooltip){
-    $script .= '$(function () {
+if ($tooltip) {
+    $script .= 
+    '$(function () {
         $(\'[data-toggle="tooltip"]\').tooltip()
-      })';
+    })';
 }
+$compiler = "";
 
-if($dropdown){
+if ($dropdown) {
     $compiler .='</div>';
     $style .= 
-        '#'.$id.'.'.$base_class.'>.dropdown>.dropdown-menu>*{
+    '#'.$id.'.'.$base_class.'>.dropdown>.dropdown-menu>*{
         display: block;
         width: 100%;
         padding: .25rem 1.5rem;
@@ -58,11 +65,11 @@ if($dropdown){
     }';
 } 
 
-if($dropdown){
+if ($dropdown) {
 
-    if(is_array($dropdown)){
+    if (is_array($dropdown)) {
 
-        if(!preg_match("/[<>]+/", $dropdown[count($dropdown)-1])){
+        if (!preg_match("/[<>]+/", $dropdown[count($dropdown)-1])) {
            $compiler .= '<div class="dropdown '.$dropdown[count($dropdown)-1].'">'; 
 
         }   else  {
@@ -74,12 +81,12 @@ if($dropdown){
     }
 }
 
-if($tag === "button"){
+if ($tag === "button") {
     $compiler .= '<button id="'.$id.'" class="'.$base_class.' '.$template.'"';
 
-    if($tooltip) {
+    if ($tooltip) {
 
-        if(is_array($tooltip)){
+        if (is_array($tooltip)) {
             $base_attributes =  [
                                     "type"          =>  "submit",
                                     "data-toggle"   =>  "tooltip",
@@ -97,7 +104,7 @@ if($tag === "button"){
         }
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($dropdown)   {
+    }   elseif ($dropdown)   {
 
         $base_attributes = [
                                 "class"         =>  "dropdown-toggle",
@@ -109,9 +116,9 @@ if($tag === "button"){
                             ];
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($popover)    {
+    }   elseif ($popover)    {
         
-        if(is_array($popover)){
+        if (is_array($popover)) {
             $base_attributes =      [
                                         "data-container"    =>  "body",
                                         "data-toggle"       =>  "popover",
@@ -129,7 +136,7 @@ if($tag === "button"){
         }
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($collapse)   {
+    }   elseif ($collapse)   {
         $base_attributes = [
                                 "type"          =>  "button",
                                 "data-toggle"   =>  "collapse",
@@ -147,21 +154,21 @@ if($tag === "button"){
     }
     $compiler .= $content;
 
-    if($script){
+    if ($script) {
         $compiler .= "<script>$script</script>";
     }
 
-    if($style){
+    if ($style) {
         $compiler .= "<style>$style</style>";
     }
     $compiler .= '</button>';
 
-}   elseif($tag === "a")  {
+}   elseif ($tag === "a")  {
     $compiler .= '<a id="'.$id.'" class="'.$base_class.' '.$template.'" ';
 
-    if($tooltip){
+    if ($tooltip) {
 
-        if(is_array($tooltip)){
+        if (is_array($tooltip)) {
             $base_attributes = [
                                     "type"          =>  "submit",
                                     "data-toggle"   =>  "tooltip",
@@ -179,7 +186,7 @@ if($tag === "button"){
         } 
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($dropdown)   {
+    }   elseif ($dropdown)   {
         $base_attributes = [
                                 "class"         =>  "dropdown-toggle",
                                 "href"          =>  "#",
@@ -191,9 +198,9 @@ if($tag === "button"){
                             ];
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($popover)    {
+    }   elseif ($popover)    {
 
-        if(is_array($popover)){
+        if (is_array($popover)) {
             $base_attributes =   [
                                     "href"          =>  "#",
                                     "role"          =>  "button",
@@ -215,7 +222,7 @@ if($tag === "button"){
         }
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($collapse)   {
+    }   elseif ($collapse)   {
         $base_attributes = [
                                 "data-toggle"   =>  "collapse",
                                 "href"          =>  '#'.$secondary_id,
@@ -234,23 +241,23 @@ if($tag === "button"){
     }
     $compiler .= $content;
 
-    if($script){
+    if ($script) {
         $compiler .= "<script>$script</script>";
     } 
 
-    if($style){
+    if ($style) {
         $compiler .= "<style>$style</style>";
     } 
     $compiler .= '</a>';
 
-} elseif($tag === "input")  {
+} elseif ($tag === "input")  {
 
     $compiler .= '<div id="'.$id.'" class="input-group" style="width:auto">';
     $compiler .= '<input class="'.$base_class.' '.$template.'" ';
 
-    if($tooltip){
+    if ($tooltip) {
 
-        if(is_array($tooltip)){
+        if (is_array($tooltip)) {
             $base_attributes =  [
                                     "type"          =>  "submit",
                                     "value"         =>  $content,
@@ -269,9 +276,9 @@ if($tag === "button"){
         } 
         $compiler .= attr_append($attr, $base_attributes).'>';
 
-    }   elseif($popover)    {
+    }   elseif ($popover)    {
 
-        if(is_array($popover)){
+        if (is_array($popover)) {
             $base_attributes =   [
                                     "type"          =>  "submit",
                                     "value"         =>  $content,
@@ -301,30 +308,34 @@ if($tag === "button"){
         $compiler .= attr_append($attr, $base_attributes).'>';
     }
 
-    if($script){
+    if ($script) {
         $compiler .= "<script>$script</script>";
     }
 
-    if($style){
+    if ($style) {
         $compiler .= "<style>$style</style>";
     } 
 
     $compiler .= '</div>'; 
 }
 
-if($dropdown){
+if ($dropdown) {
 
-    if(is_array($dropdown)){
+    if (is_array($dropdown)) {
         $drop_compilator = "";
         $i = 0;
 
         foreach ($dropdown as $value) {
 
-            if($i < (count($dropdown)-1) && !preg_match("/[<>]+/", $dropdown[count($dropdown)-1])){
+            if ($i < (count($dropdown)-1) && !preg_match("/[<>]+/",
+                $dropdown[count($dropdown)-1])) {
+                    
                 $drop_compilator .= $value;
                 $i++;
 
-            }   elseif($i <= (count($dropdown)-1) && preg_match("/[<>]+/", $dropdown[count($dropdown)-1]))  {
+            }   elseif ($i <= (count($dropdown)-1) && preg_match("/[<>]+/",
+                        $dropdown[count($dropdown)-1]))  {
+
                 $drop_compilator .= $value;
                 $i++;
 
@@ -332,15 +343,24 @@ if($dropdown){
                 break;
             }
         }
-        $compiler .= '<div class="dropdown-menu">'.$drop_compilator.'</div>';
+        $compiler .= 
+            '<div class="dropdown-menu">'.
+                $drop_compilator.
+            '</div>';
 
     }   else    {
-        $compiler .= '<div class="dropdown-menu">'.$dropdown.'</div>';
+        $compiler .= 
+            '<div class="dropdown-menu">'.
+                $dropdown.
+            '</div>';
     } 
 } 
 
-if($collapse){
-    $compiler .= '<div class="collapse navbar-collapse" id="'.$secondary_id.'">'.$collapse.'</div>';
+if ($collapse) {
+    $compiler .= 
+        '<div class="collapse navbar-collapse" id="'.$secondary_id.'">'.
+            $collapse.
+        '</div>';
 }
 return $compiler;
 }

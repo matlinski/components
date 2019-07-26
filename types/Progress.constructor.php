@@ -1,7 +1,6 @@
 <?php
 
-function Progress($input = ""){
-$compiler = "";
+function Progress($input = "") {
 $base_class = "progress";
 
 $default = [
@@ -14,19 +13,26 @@ $default = [
                 "script"    =>  ""
             ];
             
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
-
+$compiler = "";
 $base_attributes = [];
-$compiler .= '<div id="'.$id.'" class="'.$base_class.'" style="width: '.$max.'%" '.attr_append($attr, $base_attributes).'>';
-$compiler .= '<div class="progress-bar '.$template.'" role="progressbar" aria-valuenow="'.$progress.'" aria-valuemin="'.$min.'" aria-valuemax="'.$max.'" style="width: '.($progress/$max*100).'%">'.$progress.'%</div>';
+$compiler .= 
+        '<div id="'.$id.'" class="'.$base_class.'" style="width: '.
+                $max.'%" '.attr_append($attr, $base_attributes).'>';
 
-if($script){
+$compiler .= 
+        '<div class="progress-bar '.$template.'" role="progressbar"
+        aria-valuenow="'.$progress.'" aria-valuemin="'.$min.'"
+        aria-valuemax="'.$max.'" style="width: 
+        '.($progress/$max*100).'%">'.$progress.'%</div>';
+
+if ($script) {
         $compiler .= "<script>$script</script>";
 } 
 
-if($style){
+if ($style) {
         $compiler .= "<style>$style</style>";
 } 
 $compiler .= '</div>';

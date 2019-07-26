@@ -1,7 +1,6 @@
 <?php
 
-function Breadcrumb($input = ""){
-$compiler = "";
+function Breadcrumb($input = "") {
 $base_class = "breadcrumb";
 
 $default = [
@@ -18,31 +17,40 @@ $default = [
                 "script"    =>  ""
             ];
 
-foreach(Component($input, $default, $base_class) as $key => $value){
+foreach(Component($input, $default, $base_class) as $key => $value) {
     $$key = $value;
 }
 $base_attributes = [];
 
-if($separator){
+if ($separator) {
     $style .= '
         .breadcrumb-item + .breadcrumb-item::before{
             content: "'.$separator.'";
         }
     ';
 }
-$compiler .= '<ul id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr, $base_attributes).'>';
+$compiler = "";
+$compiler .= 
+    '<ul id="'.$id.'" class="'.$base_class.' '.$template.
+    '" '.attr_append($attr, $base_attributes).'>';
 
-if(is_array($content)){
+if (is_array($content)) {
     $content_compiler = "";
     $i = 1;
 
-    foreach($content as $value){
+    foreach($content as $value) {
 
-        if($i === (count($content)) ){
-            $content_compiler .= '<li class="breadcrumb-item active" aria-current="page">'.$value.'</li>';
+        if ($i === (count($content)) ) {
+            $content_compiler .= 
+            '<li class="breadcrumb-item active" aria-current="page">'.
+                $value.
+            '</li>';
 			
         }	else	{
-            $content_compiler .= '<li class="breadcrumb-item">'.$value.'</li>';
+            $content_compiler .= 
+            '<li class="breadcrumb-item">'.
+                $value.
+            '</li>';
         } 
         $i++;
     }
@@ -53,11 +61,11 @@ if(is_array($content)){
     $compiler .= $content_compiler;
 }
 
-if($script){
+if ($script) {
     $compiler .= "<script>$script</script>";
 }
 
-if($style){
+if ($style) {
     $compiler .= "<style>$style</style>"; 
 }
 $compiler .= "</ul>";
