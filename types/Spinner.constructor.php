@@ -5,8 +5,8 @@ $base_class = "spinner";
 
 $default = [
                 "radius"    =>  "2rem",
-                "template"  =>  "spinner-border",
                 "attr"      =>  "",
+                "template"  =>  "spinner-border",
                 "style"     =>  "",
                 "script"    =>  ""
             ];

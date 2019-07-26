@@ -9,9 +9,9 @@ $default = [
 
                 "image"     =>  '<img src=\'https://source.unsplash.com/'.
                                     rand(590,610).'x350/\' alt=\'...\'>',
-                                    
+                
+                "attr"      =>  "",                   
                 "template"  =>  "col-3",
-                "attr"      =>  "",
                 "style"     =>  "&>img{".
                                     "width: 100%;".
                                     "border-top-left-radius: calc(.25rem - 1px);".

@@ -5,12 +5,12 @@ $base_class = "btn";
 $default = [
                 "content"   =>  "Content placeholder",
                 "tag"       =>  "button",
-                "attr"      =>  "",
-                "template"  =>  "btn-primary",
                 "tooltip"   =>  false,
                 "dropdown"  =>  false,
                 "popover"   =>  false,
                 "collapse"  =>  false,
+                "attr"      =>  "",
+                "template"  =>  "btn-primary",
                 "style"     =>  "",
                 "script"    =>  ""
             ];

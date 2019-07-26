@@ -18,10 +18,10 @@ $default = [
 
                 "image"     =>  '<img src=\'https://picsum.photos/'.rand(190,210).
                                     '/200\' class=\'card-img-top col-2\' alt=\'alt placeholder\'>',
-
-                "template"  =>  "",
+                                    
                 "reverse"   =>  false,
                 "attr"      =>  "",
+                "template"  =>  "",
                 "style"     =>  "",
                 "script"    =>  ""
             ];
