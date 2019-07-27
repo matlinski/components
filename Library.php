@@ -26,6 +26,7 @@ require_once("utilities/info.php");
  * for each component inside compiler function.
  */
 require_once("utilities/attr.append.php");
+require_once("utilities/secondary_id.php");
 /**
  * COMPILER FUNCTION
  * This function is taking the output from Component

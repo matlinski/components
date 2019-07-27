@@ -1,5 +1,5 @@
 <?php
-    function attr_append($attr, $base_attributes) {
+    function attr_append($attr, $base_attributes = []) {
         $attr_compiler = "";
 
         if (is_array($attr)) {
