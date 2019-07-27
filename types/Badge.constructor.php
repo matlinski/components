@@ -23,11 +23,11 @@ $scheme =   [
                                     attr_append($attr).'>'.$content,
                 ],
                 [
-                    "condition" => $tag === "span" && $script,
+                    "condition" => $tag === "span" && $script !== false,
                     "line"      => "<script>$script</script>"
                 ],
                 [
-                    "condition" => $tag === "span" && $style,
+                    "condition" => $tag === "span" && $style !== false,
                     "line"      => "<style>$style</style>"
                 ],
                 [
@@ -40,11 +40,11 @@ $scheme =   [
                     ' class="'.$base_class.' '.$template.'">'.$content
                 ],
                 [
-                    "condition" => $tag === "a" && $script,
+                    "condition" => $tag === "a" && $script !== false,
                     "line"      => "<script>$script</script>"
                 ],
                 [
-                    "condition" => $tag === "a" && $style,
+                    "condition" => $tag === "a" && $style !== false,
                     "line"      => "<style>$style</style>"
                 ],
                 [

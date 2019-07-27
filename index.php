@@ -15,7 +15,8 @@
 </script>
 </head>
 <body>
-<?=Button(["popover"=>true]) ?>
+<?=navbar() ?>
+
 </body>
 </html>
 

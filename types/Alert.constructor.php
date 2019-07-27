@@ -33,11 +33,11 @@ $scheme =   [
                                     </button>'
                ],
                [
-                    "condition" => $script,
+                    "condition" => $script !== false,
                     "line"      => "<script>$script</script>"
                ],
                [
-                    "condition" => $script,
+                    "condition" => $style !== false,
                     "line"      => "<style>$style</style>"
                ],
                [

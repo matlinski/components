@@ -7,20 +7,53 @@ $default = [
                                 "<p>Body placeholder</p>".
                                 "<button class='btn btn-primary'>Click here</button>",
 
-                "image"     =>  '<img src=\'https://source.unsplash.com/'.
-                                    rand(590,610).'x350/\' alt=\'...\'>',
+                "image"     =>  '<img width=\'100%\' src=\'https://source.unsplash.com/'.
+                                    rand(320,370).'x350/\' alt=\'...\'>',
                 
                 "attr"      =>  "",                   
-                "template"  =>  "col-3",
+                "template"  =>  "col-lg-3 col-md-5 col-sm-7 col-12",
                 "style"     =>  "&>img{".
-                                    "width: 100%;".
+                                    "background-size: cover;".
                                     "border-top-left-radius: calc(.25rem - 1px);".
                                     "border-top-right-radius: calc(.25rem - 1px);".
                                 "}",
                 "script"    =>  ""
             ];
 
-return Compiler($base_class, Component($input, $default, $base_class));
+            foreach(Component($input, $default, $base_class) as $key => $value) {
+                $$key = $value;
+           }
+           
+           $scheme =   [
+                          [
+                               "condition" => true,
+                               "line"      => '<div id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr).'>'
+                          ],
+                          [
+                               "condition" => true,
+                               "line"      => $image
+                          ],
+                          [
+                               "condition" => true,
+                               "line"      => '<div class="card-body">'.
+                                                 $content.
+                                             '</div>'
+                          ],
+                          [
+                               "condition" => $script !== false,
+                               "line"      => "<script>$script</script>"
+                          ],
+                          [
+                               "condition" => $style !== false,
+                               "line"      => "<style>$style</style>"
+                          ],
+                          [
+                               "condition" => true,
+                               "line"      => "</div>"
+                          ],
+                       ];
+                       
+           return Compiler($base_class, $scheme);
 }
 
 ?>

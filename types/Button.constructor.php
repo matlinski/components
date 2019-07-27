@@ -138,11 +138,11 @@ $default = [
                             "line"      => $content
                           ],
                           [
-                               "condition" => $tag === "button" && $script,
+                               "condition" => $tag === "button" && $script !== false,
                                "line"      => "<script>$script</script>"
                           ],
                           [
-                               "condition" => $tag === "button" && $style,
+                               "condition" => $tag === "button" && $style !== false,
                                "line"      => "<style>$style</style>"
                           ],
                           [
@@ -227,11 +227,11 @@ $default = [
                                "line"      => $content
                           ],
                           [
-                               "condition" => $tag === "a" && $script,
+                               "condition" => $tag === "a" && $script !== false,
                                "line"      => "<script>$script</script>"
                           ],
                           [
-                               "condition" => $tag === "a" && $style,
+                               "condition" => $tag === "a" && $style !== false,
                                "line"      => "<style>$style</style>"
                           ],
                           [
@@ -295,11 +295,11 @@ $default = [
                                                                  ]).'>'
                           ],
                           [
-                               "condition" => $tag === "input" && $script,
+                               "condition" => $tag === "input" && $script !== false,
                                "line"      => "<script>$script</script>"
                           ],
                           [
-                               "condition" => $tag === "input" && $style,
+                               "condition" => $tag === "input" && $style !== false,
                                "line"      => "<style>$style</style>"
                           ],
                           [
