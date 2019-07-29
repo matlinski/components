@@ -89,7 +89,24 @@ function Component($input, $default, $base_class) {
         $style_compiler .= $style;
         $style = $style_compiler;
     }
+    if (is_array($script)) {
+        $script_compiler = "";
+        
+        foreach($script as $key => $value) {
+            $key = preg_replace("/[&]/", "", $key);
+            $script_compiler .= '$(\'#'.$output["id"].'\')';
+        }
+        $script = $script_compiler;
+
+    } else {
+
+        $script_compiler = "";
+        $script = preg_replace("/[&]/", '$(\'#'.$output["id"].'\')', $script);
+        $script_compiler .= $script;
+        $script = $script_compiler;
+    }
     $output["style"] = $style;
+    $output["script"] = $script;
     return $output;
 }   
 

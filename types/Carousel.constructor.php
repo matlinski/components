@@ -20,7 +20,7 @@ function f_carousel($active, $interval =5000, $content){
     }
 
     function f2_carousel($content, $active, $id){
-        $temp = html('ol', ['class'=>'carousel-indivators']);
+        $temp = html('ol', ['class'=>'carousel-indicators']);
 
                 foreach($content as $key => $value) {
 
@@ -99,12 +99,12 @@ $default = [
                                             )
                           ],
                           [
-                               "condition" => true,
-                               "line"      => html('div',['class'=>'carousel-inner'])
+                                "condition" => is_array($content) && $indicators,
+                                "line"      => f2_carousel($content, $active, $id)
                           ],
                           [
-                               "condition" => is_array($content) && $indicators,
-                               "line"      => f2_carousel($content, $active, $id)
+                               "condition" => true,
+                               "line"      => html('div',['class'=>'carousel-inner'])
                           ],
                           [
                                "condition" => true,

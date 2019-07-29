@@ -21,7 +21,7 @@
 <?= BreadCrumb()?>
 <?= Button()?>
 <?= Card()?>
-<?= Carousel(['indicators'=>true])?>
+<?= Carousel()?>
 <?= Input()?>
 <?= Jumbotron()?>
 <?= Media()?>
