@@ -46,112 +46,118 @@ $default = [
                  border: 0;
              }';
          }
-        $secondary_id = secondary_id();
-        if(is_array($dropdown)){
-            $drop_length = $drop_length;
-        } else {
-            $drop_length = 0;
-        }
-           
-           $scheme =   [
-                          [
-                               "condition" => $dropdown && is_array($dropdown) && !preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
-                               "line"      => '<div class="dropdown '.$drop_length.'">'
-                          ],
-                          [
-                               "condition" => $dropdown && is_array($dropdown) && preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
-                               "line"      => '<div class="dropdown">'
-                          ],
-                          [
-                               "condition" => $dropdown && !is_array($dropdown) && !$tooltip && !$popover && !$collapse,
-                               "line"      => '<div class="dropdown">'
-                          ],
-                          [
-                               "condition" => $tag === "button",
-                               "line"      => '<button id="'.$id.'" class="'.$base_class.' '.$template.'"'
-                          ],
+         $secondary_id = secondary_id();
+         if(is_array($dropdown)){
+             $drop_length = $drop_length;
+         } else {
+             $drop_length = 0;
+         }
+            
+            $scheme =   [
+                           [
+                                "condition" => $dropdown && is_array($dropdown) && !preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
+                                "line"      => '<div class="dropdown '.$drop_length.'">'
+                           ],
+                           [
+                                "condition" => $dropdown && is_array($dropdown) && preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
+                                "line"      => '<div class="dropdown">'
+                           ],
+                           [
+                                "condition" => $dropdown && !is_array($dropdown) && !$tooltip && !$popover && !$collapse,
+                                "line"      => '<div class="dropdown">'
+                           ],
                           [
                                "condition" => $tag === "button" && $tooltip && is_array($tooltip) && !$dropdown && !$popover && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                    "type"          =>  "submit",
-                                                                    "data-toggle"   =>  "tooltip",
-                                                                    "data-placement"=>  $tooltip[1],
-                                                                    "title"         =>  $tooltip[0]
-                                                                 ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                             $template' ".attr_append($attr, [
+                                                  "type"          =>  "submit",
+                                                  "data-toggle"   =>  "tooltip",
+                                                  "data-placement"=>  $tooltip[1],
+                                                  "title"         =>  $tooltip[0]
+                                               ])
+                                             )
                           ],
                           [
                             "condition" => $tag === "button" && $tooltip && !is_array($tooltip) && !$dropdown && !$popover && !$collapse,
-                            "line"      => attr_append($attr, [
-                                                                    "type"          =>  "submit",
-                                                                    "data-toggle"   =>  "tooltip",
-                                                                    "data-placement"=>  "top",
-                                                                    "title"         =>  $tooltip
-                                                              ]).'>'
+                            "line"      => html('button',"id='$id' class='$base_class 
+                            $template' ".attr_append($attr, [
+                                                  "type"          =>  "submit",
+                                                  "data-toggle"   =>  "tooltip",
+                                                  "data-placement"=>  "top",
+                                                  "title"         =>  $tooltip
+                                                  ])
+                                             )
                           ],
                           [
                                "condition" => $tag === "button" && $dropdown && !$tooltip && !$popover && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                     "class"         =>  "dropdown-toggle",
-                                                                     "type"          =>  "submit",
-                                                                     "id"            =>  "dropdownMenuButton",
-                                                                     "data-toggle"   =>  "dropdown",
-                                                                     "aria-haspopup" =>  "true",
-                                                                     "aria-expanded" =>  "false"
-                                                                 ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "class"         =>  "dropdown-toggle",
+                                                       "type"          =>  "submit",
+                                                       "id"            =>  "dropdownMenuButton",
+                                                       "data-toggle"   =>  "dropdown",
+                                                       "aria-haspopup" =>  "true",
+                                                       "aria-expanded" =>  "false"
+                                                  ])
+                                                )
                           ],
                           [
                                "condition" => $tag === "button" && $popover && is_array($popover) && !$tooltip && !$dropdown && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                    "data-container"    =>  "body",
-                                                                    "data-toggle"       =>  "popover",
-                                                                    "data-placement"    =>  $popover[1],
-                                                                    "data-content"      =>  $popover[0]
-                                                                ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "data-container"    =>  "body",
+                                                       "data-toggle"       =>  "popover",
+                                                       "data-placement"    =>  $popover[1],
+                                                       "data-content"      =>  $popover[0]
+                                                  ])
+                                                )
                           ],
                           [
                                "condition" => $tag === "button" && $popover && !is_array($popover) && !$tooltip && !$dropdown && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                    "data-container"    =>  "body",
-                                                                    "data-toggle"       =>  "popover",
-                                                                    "data-placement"    =>  "top",
-                                                                    "data-content"      =>  $popover
-                                                                ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                             $template' ".attr_append($attr, [
+                                                  "data-container"    =>  "body",
+                                                  "data-toggle"       =>  "popover",
+                                                  "data-placement"    =>  "top",
+                                                  "data-content"      =>  $popover
+                                              ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "button" && $collapse && !$tooltip && !$dropdown && !$popover,
-                               "line"      => attr_append($attr, [
-                                                                     "type"          =>  "button",
-                                                                     "data-toggle"   =>  "collapse",
-                                                                     "data-target"   =>  '#'.$secondary_id,
-                                                                     "aria-expanded" =>  "false",
-                                                                     "aria-controls" =>  '#'.$secondary_id
-                                                                 ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "type"          =>  "button",
+                                                       "data-toggle"   =>  "collapse",
+                                                       "data-target"   =>  '#'.$secondary_id,
+                                                       "aria-expanded" =>  "false",
+                                                       "aria-controls" =>  '#'.$secondary_id
+                                                   ])
+                                             )
                           ],
                           [
                                "condition" => $tag === "button" && !$tooltip && !$dropdown && !$popover && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                     "type"=>"submit"
-                                                                 ]).'>'
+                               "line"      => html('button',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "type"=>"submit"
+                                                   ])
+                                             )
                           ],
                           [
                             "condition" => $tag === "button",
                             "line"      => $content
                           ],
                           [
-                               "condition" => $tag === "button" && $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $tag === "button" && $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => $tag === "button" && !empty($script),
+                              "line"      => html('script').$script.html('script','/')
+                         ],
+                         [
+                              "condition" => $tag === "button" && !empty($style),
+                              "line"      => html('style').$style.html('style','/')
+                         ],
                           [
                                "condition" => $tag === "button",
-                               "line"      => '</button>'
-                          ],
-                          [
-                               "condition" => $tag === "a",
-                               "line"      => '<a id="'.$id.'" class="'.$base_class.' '.$template.'" '
+                               "line"      => html('button', '/')
                           ],
                           [
                                "condition" => $tag === "a" && $tooltip && is_array($tooltip) && !$dropdown && !$popover && !$collapse,
@@ -164,97 +170,107 @@ $default = [
                           ],
                           [
                                "condition" => $tag === "a" && $tooltip && !is_array($tooltip) && !$dropdown && !$popover && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                    "type"          =>  "submit",
-                                                                    "data-toggle"   =>  "tooltip",
-                                                                    "data-placement"=>  "top",
-                                                                    "title"         =>  $tooltip
-                                                                ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                                             $template' ".attr_append($attr, [
+                                                  "type"          =>  "submit",
+                                                  "data-toggle"   =>  "tooltip",
+                                                  "data-placement"=>  "top",
+                                                  "title"         =>  $tooltip
+                                              ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a" && $dropdown && !$tooltip && !$popover && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                     "class"         =>  "dropdown-toggle",
-                                                                     "href"          =>  "#",
-                                                                     "role"          =>  "button",
-                                                                     "id"            =>  "dropdownMenuButton",
-                                                                     "data-toggle"   =>  "dropdown",
-                                                                     "aria-haspopup" =>  "true",
-                                                                     "aria-expanded" =>  "false"
-                                                                 ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                                             $template' ".attr_append($attr, [
+                                                  "class"         =>  "dropdown-toggle",
+                                                  "href"          =>  "#",
+                                                  "role"          =>  "button",
+                                                  "id"            =>  "dropdownMenuButton",
+                                                  "data-toggle"   =>  "dropdown",
+                                                  "aria-haspopup" =>  "true",
+                                                  "aria-expanded" =>  "false"
+                                              ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a" && $popover && is_array($popover) && !$dropdown && !$tooltip && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                         "href"          =>  "#",
-                                                                         "role"          =>  "button",
-                                                                         "data-container"=>  "body",
-                                                                         "data-toggle"   =>  "popover",
-                                                                         "data-placement"=>  $popover[1],
-                                                                         "data-content"  =>  $popover[0]
-                                                                     ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                                             $template' ".attr_append($attr, [
+                                                  "href"          =>  "#",
+                                                  "role"          =>  "button",
+                                                  "data-container"=>  "body",
+                                                  "data-toggle"   =>  "popover",
+                                                  "data-placement"=>  $popover[1],
+                                                  "data-content"  =>  $popover[0]
+                                              ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a" && $popover && !is_array($popover) && !$dropdown && !$tooltip && !$collapse,
-                               "line"      => attr_append($attr, [
-                                                                         "href"          =>  "#",
-                                                                         "role"          =>  "button",
-                                                                         "data-container"=>  "body",
-                                                                         "data-toggle"   =>  "popover",
-                                                                         "data-placement"=>  "top",
-                                                                         "data-content"  =>  $popover
-                                                                     ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                               $template' ".attr_append($attr, [
+                                                  "href"          =>  "#",
+                                                  "role"          =>  "button",
+                                                  "data-container"=>  "body",
+                                                  "data-toggle"   =>  "popover",
+                                                  "data-placement"=>  "top",
+                                                  "data-content"  =>  $popover
+                                             ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a" && $collapse && !$dropdown && !$tooltip && !$popover,
-                               "line"      => attr_append($attr, [
-                                                                     "data-toggle"   =>  "collapse",
-                                                                     "href"          =>  '#'.$secondary_id,
-                                                                     "role"          =>  "button",
-                                                                      "aria-expanded"=>  "false",
-                                                                      "aria-controls"=>  '#'.$secondary_id
-                                                                 ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                  "data-toggle"   =>  "collapse",
+                                                  "href"          =>  '#'.$secondary_id,
+                                                  "role"          =>  "button",
+                                                  "aria-expanded"=>  "false",
+                                                  "aria-controls"=>  '#'.$secondary_id
+                                             ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a" && !$collapse && !$dropdown && !$popover && !$tooltip,
-                               "line"      => attr_append($attr, [
-                                                                    "href"  =>  "#",
-                                                                    "role"  =>  "button"
-                                                                ]).'>'
+                               "line"      => html('a',"id='$id' class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "href"  =>  "#",
+                                                       "role"  =>  "button"
+                                                   ])
+                                        )
                           ],
                           [
                                "condition" => $tag === "a",
                                "line"      => $content
                           ],
                           [
-                               "condition" => $tag === "a" && $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $tag === "a" && $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => $tag === "a" && !empty($script),
+                              "line"      => html('script').$script.html('script','/')
+                         ],
+                         [
+                              "condition" => $tag === "a" && !empty($style),
+                              "line"      => html('style').$style.html('style','/')
+                         ],
                           [
                                "condition" => $tag === "a",
-                               "line"      => '</a>'
+                               "line"      => html('a','/')
                           ],
                           [
                                "condition" => $tag === "input",
-                               "line"      => '<div id="'.$id.'" class="input-group" style="width:auto">'
-                          ],
-                          [
-                               "condition" => $tag === "input",
-                               "line"      => '<input class="'.$base_class.' '.$template.'" '
+                               "line"      => html('div',['id'=>$id, 'class'=>'input-group', 'style'=>'width:auto'])
                           ],
                           [
                                "condition" => $tag === "input" && $tooltip && is_array($tooltip) && !$collapse && !$dropdown && !$popover,
-                               "line"      => attr_append($attr, [
-                                                                         "type"          =>  "submit",
-                                                                         "value"         =>  $content,
-                                                                         "data-toggle"   =>  "tooltip",
-                                                                         "data-placement"=>  "$tooltip[1]",
-                                                                         "title"         =>  $tooltip[0]
-                                                                     ]).'>'
+                               "line"      => html('input',"class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "type"          =>  "submit",
+                                                       "value"         =>  $content,
+                                                       "data-toggle"   =>  "tooltip",
+                                                       "data-placement"=>  $tooltip[1],
+                                                       "title"         =>  $tooltip[0]
+                                                   ])
+                                             )
                           ],
                           [
                                "condition" => $tag === "input" && $tooltip && !is_array($tooltip) && !$collapse && !$dropdown && !$popover,
@@ -289,22 +305,24 @@ $default = [
                           ],
                           [
                                "condition" => $tag === "input" && !$collapse && !$dropdown && !$popover && !$tooltip,
-                               "line"      => attr_append($attr, [
-                                                                     "type"  =>  "submit",
-                                                                     "value" =>  $content
-                                                                 ]).'>'
+                               "line"      => html('input',"class='$base_class 
+                                                  $template' ".attr_append($attr, [
+                                                       "type"  =>  "submit",
+                                                       "value" =>  $content
+                                                   ])
+                                             )
                           ],
                           [
-                               "condition" => $tag === "input" && $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $tag === "input" && $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => $tag === "input" && !empty($script),
+                              "line"      => html('script').$script.html('script','/')
+                         ],
+                         [
+                              "condition" => $tag === "input" && !empty($style),
+                              "line"      => html('style').$style.html('style','/')
+                         ],
                           [
                                "condition" => $tag === "input",
-                               "line"      => '</div>'
+                               "line"      => html('/')
                           ],
                           [
                                "condition" => $dropdown && is_array($dropdown) && !$collapse && !$tooltip && !$popover,
@@ -328,22 +346,22 @@ $default = [
                                              break;
                                          }
                                     }
-                                    return '<div class="dropdown-menu">'.
+                                    return html('div',['class'=>'dropdown-menu']).
                                                 $drop_compilator.
-                                            '</div>';
+                                            html('/');
                                }
                           ],
                           [
                                "condition" => $dropdown && !is_array($dropdown) && !$collapse && !$tooltip && !$popover,
-                               "line"      => '<div class="dropdown-menu">'.
+                               "line"      => html('div',['class'=>'dropdown-menu']).
                                                     $dropdown.
-                                                '</div>'
+                                             html('/')
                           ],
                           [
                                "condition" => $collapse && !$dropdown && !$tooltip && !$popover,
-                               "line"      => '<div class="collapse navbar-collapse" id="'.$secondary_id.'">'.
+                               "line"      => html('div',['class'=>'collapse navbar-collapse', 'id'=>$secondary_id]).
                                                 $collapse.
-                                            '</div>'
+                                             html('/')
                           ],
                        ];
                        

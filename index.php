@@ -15,51 +15,7 @@
 </script>
 </head>
 <body>
-<?=navbar() ?>
 
+<?= JUMBOTRON()?>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php #Alert('{"content": "There is a close button","tag": "h1","attr": "onclick=\"test()\"","template": "alert-success","dismisable": true,"style": {"&": "padding: 20px"},"script": "function test(){alert(\"lol\")}"}')?>
-<?php #Alert(["There is a close button", "h1", "onclick=\"test()\"", "alert-success", true, ["&" => "padding: 20px"], "function test(){alert(\"lol\")}"])?>
-<?php /* Alert([
-    button(["You've got message".Badge([534535, "span", "", "badge-danger"]), "button", "href=\"https://google.com\"", "btn-secondary"]), 
-    "h1", 
-    ["onclick"=> "test()", "test"=>"test2"],
-     "alert-success", true, "&{padding: 20px}",
-     "function test(){alert(\"lol\")}"]) ?>
-     <?php #Progress([time()%60, 0, 60, "progress-bar-striped progress-bar-animated"])?>
-     <?=  Spinner(); */?>
-<?php # Alert("lol"); ?>
-<?php #Alert([Button(["New messages".Badge([5]), "button", ["data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Tooltip on right"]])]) ?>
-<?php # Button('{"content":"Main menu","dropdown": "<a class=\"dropdown-item\" href=\"./main.php\">Home</a>", "tag": "button"}') ?>
-<!-- <div class="btn-group"> -->
-  <?php # Button(["template"=>"btn-secondary rounded-0"]) ?>
-  <?php # Button(["content"=>'Button<span class="sr-only">Toggle Dropdown</span>',"template"=>"btn-secondary rounded-0", "tooltip"=>["An example", "right"]]) ?>
-<!-- </div> -->

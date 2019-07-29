@@ -4,9 +4,9 @@ function Navbar($input = "") {
 $base_class = "navbar";
 
 $default = [
-            "content"   =>  '<h1 class=\'navbar-brand\'>'.
+            "content"   =>  html('h1',['class'=>'navbar-brand']).
                                 'Content placeholder'.
-                            '</h1>',
+                            html('h1','/'),
             "attr"      =>  "",
             "template"  =>  "navbar-light bg-light",
             "style"     =>  "",
@@ -20,24 +20,25 @@ $default = [
        $scheme =   [
                       [
                            "condition" => true,
-                           "line"      => '<nav id="'.$id.'" class="'.$base_class.' '.$template.
-                                                '" '.attr_append($attr).'>'
+                           "line"      => html('nav',"id='$id' class='$base_class 
+                           $template' ".attr_append($attr)
+                           )
                       ],
                       [
                            "condition" => true,
                            "line"      => $content
                       ],
                       [
-                           "condition" => $script !== false,
-                           "line"      => "<script>$script</script>"
-                      ],
-                      [
-                           "condition" => $style !== false,
-                           "line"      => "<style>$style</style>"
-                      ],
+                         "condition" => !empty($script),
+                         "line"      => html('script').$script.html('script','close')
+                         ],
+                         [
+                              "condition" => !empty($style),
+                              "line"      => html('style').$style.html('style','close')
+                         ],
                       [
                            "condition" => true,
-                           "line"      => "</nav>"
+                           "line"      => html('nav','/')
                       ],
                    ];
                    

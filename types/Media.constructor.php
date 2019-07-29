@@ -4,20 +4,20 @@ function Media($input = "") {
 $base_class = "media";
 
 $default = [
-                "content"   =>  "<h5>".
+                "content"   =>  html('h5').
                                     "Content placeholder".
-                                "</h5>".
-                                "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.".
+                                html('h5','/').
+                                html('p').
+                                    " Lorem ipsum dolor sit amet consectetur adipisicing elit.".
                                     " Nesciunt repellendus perspiciatis maxime porro. Est ab cum,".
                                     " porro ullam dicta expedita! Quis a, vero nemo dolore assumenda".
                                     " vitae impedit doloremque reiciendis.".
-                                "</p>".
-                                "<button class='btn btn-primary'>".
-                                    "Click here".
-                                "</button>",
+                                html('p','/').
+                                html('button',['class'=>'btn btn-primary']).
+                                   'Click here'.
+                                html('button',"/"),
 
-                "image"     =>  '<img src=\'https://picsum.photos/'.rand(190,210).
-                                    '/200\' class=\'card-img-top col-md-2 col-sm-4 col-6 mt-4\' alt=\'alt placeholder\'>',
+                "image"     =>  html('img',['src'=>'<img src=\'https://picsum.photos/'.rand(190,210).'/200','class'=>'card-img-top col-md-2 col-sm-4 col-6 mt-4','alt'=>'...']),
                                     
                 "reverse"   =>  false,
                 "attr"      =>  "",
@@ -43,8 +43,9 @@ $default = [
            $scheme =   [
                           [
                                "condition" => true,
-                               "line"      => '<div id="'.$id.'" class="'.$base_class.
-                                    ' '.$template.'" '.attr_append($attr).'>'
+                               "line"      => html('div',"id='$id' class='$base_class 
+                               $template' ".attr_append($attr)
+                               )
                           ],
                           [
                                "condition" => !$reverse,
@@ -52,25 +53,25 @@ $default = [
                           ],
                           [
                                "condition" => true,
-                               "line"      => '<div class="card-body">'.
+                               "line"      => html('div',['class'=>'card-body']).
                                                 $content.
-                                            '</div>'
+                                            html('/')
                           ],
                           [
                                "condition" => $reverse,
                                "line"      => $image
                           ],
                           [
-                               "condition" => $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => !empty($script),
+                              "line"      => html('script').$script.html('script','close')
+                         ],
+                         [
+                              "condition" => !empty($style),
+                              "line"      => html('style').$style.html('style','close')
+                         ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                        ];
                        

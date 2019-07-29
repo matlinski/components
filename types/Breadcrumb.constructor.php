@@ -6,8 +6,8 @@ $base_class = "breadcrumb";
 $default = [
                 "content"   => 
                     [
-                    '<a href=\'home.html\'>home</a>',
-                    '<a href=\'library.html\'>library</a>',
+                    html('a',['href'=>'home.html']).'home'.html('a','/'),
+                    html('a',['href'=>'library.html']).'library'.html('a','/'),
                     'data'
                     ],
                 "separator" =>  ">",
@@ -29,15 +29,15 @@ $default = [
                     
                         if ($i === (count($content)) ) {
                             $content_compiler .= 
-                                '<li class="breadcrumb-item active" aria-current="page">'.
-                                    $value.
-                                '</li>';
-                        
+                            html('li', ['class'=>'breadcrumb-item active','aria-current'=>'page']).
+                            $value.
+                            html('li','/');    
+                       
                         }	else	{
                             $content_compiler .= 
-                                '<li class="breadcrumb-item">'.
-                                    $value.
-                                '</li>';
+                            html('li', ['class'=>'breadcrumb-item']).
+                            $value.
+                            html('li','/');
                         } 
                     $i++;
                     }
@@ -59,24 +59,25 @@ $default = [
            $scheme =   [
                           [
                                "condition" => true,
-                               "line"      => '<ul id="'.$id.'" class="'.$base_class.' '.$template.
-                                                     '" '.attr_append($attr).'>'
+                               "line"      => html('ul',"id='$id' class='$base_class 
+                                                $template' ".attr_append($attr)
+                                                )
                           ],
                           [
                                "condition" => true,
                                "line"      => feature($content)
                           ],
                           [
-                               "condition" => $script !== false,
-                               "line"      => "<script>$script</script>"
+                               "condition" => !empty($script),
+                               "line"      => html('script').$script.html('script','/')
                           ],
                           [
-                               "condition" => $style !== false,
-                               "line"      => "<style>$style</style>"
+                               "condition" => !empty($style),
+                               "line"      => html('style').$style.html('style','/')
                           ],
                           [
                                "condition" => true,
-                               "line"      => "</ul>"
+                               "line"      => html('ul','/')
                           ],
                        ];
                        
@@ -84,23 +85,3 @@ $default = [
 }
 
 ?>
-
-<!-- 
-$content_compiler = "";
-$i = 1;
-foreach($content as $value) {
-
-if ($i === (count($content)) ) {
-$content_compiler .= 
-'<li class="breadcrumb-item active" aria-current="page">'.
-$value.
-'</li>';
-
-}	else	{
-$content_compiler .= 
-'<li class="breadcrumb-item">'.
-$value.
-'</li>';
-} 
-$i++;
-} -->

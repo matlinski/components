@@ -41,23 +41,25 @@ $default = [
            $scheme =   [
                           [
                                "condition" => true,
-                               "line"      => '<div id="'.$id.'" style="width:auto" class="'.$base_class.' '.$template.'">'
+                               "line"      => html('div',"id='$id' style='width:auto' class='$base_class 
+                                                  $template' "
+                                             )
                           ],
                           [
                                "condition" => is_array($label),
-                               "line"      => '<label for="'.$id.'" class="'.$label[1].'">'.
-                                                $label[0].
-                                            '</label>'
+                               "line"      => html('label', ['for'=>$id, 'class'=>$label[1]]).
+                                                  $label[0].
+                                             html('/')
                           ],
                           [
                                "condition" => !is_array($label),
-                               "line"      => '<label for="'.$id.'">'.
+                               "line"      => html('label', ['for'=>$id]).
                                                     $label.
-                                                '</label>'
+                                              html('/')
                           ],
                           [
                                "condition" => true,
-                               "line"      => '<div class="input-group ">'
+                               "line"      => html('div',['class'=>'input-group'])
                           ],
                           [
                                "condition" => $sticker && is_array($sticker) && $sticker[1]=== "append",
@@ -65,8 +67,7 @@ $default = [
                           ],
                           [
                                "condition" => $sticker && is_array($sticker),
-                               "line"      => '<'.$tag.' class="form-control" '.
-                                                attr_append($attr, $base_attributes).'>'
+                               "line"      => html($tag, 'class="form-control"'.attr_append($attr))
                           ],
                           [
                                "condition" => $sticker && is_array($sticker) && $sticker[1] !== "append",
@@ -74,7 +75,7 @@ $default = [
                           ],
                           [
                                "condition" => $sticker && is_array($sticker),
-                               "line"      => '<div class="input-group-'.$sticker[1].'">'
+                               "line"      => html('div',['class'=>'input-group-'.$sticker[1]])
                           ],
                           [
                                "condition" => $sticker && is_array($sticker),
@@ -82,7 +83,7 @@ $default = [
                           ],
                           [
                                "condition" => $sticker && !is_array($sticker),
-                               "line"      => '<div class="input-group-prepend">'
+                               "line"      => html('div',['class'=>'input-group-prepend'])
                           ],
                           [
                                "condition" => $sticker && !is_array($sticker),
@@ -90,7 +91,7 @@ $default = [
                           ],
                           [
                                "condition" => $sticker,
-                               "line"      => '</div>'
+                               "line"      => html('/')
                           ],
                           [
                                "condition" => $tag === "input",
@@ -109,23 +110,23 @@ $default = [
                           ],
                           [
                                "condition" => $tag !== "input",
-                               "line"      => "</$tag>"
+                               "line"      => html($tag,'/')
                           ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                           [
-                                "condition" => $script !== false,
-                                "line"      => "<script>$script</script>"
-                          ],
-                          [
-                                "condition" => $style  !== false,
-                                "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => !empty($script),
+                              "line"      => html('script').$script.html('script','close')
+                         ],
+                         [
+                              "condition" => !empty($style),
+                              "line"      => html('style').$style.html('style','close')
+                         ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                        ];
                        

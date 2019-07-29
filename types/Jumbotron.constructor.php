@@ -4,16 +4,16 @@ function Jumbotron($input = "") {
 $base_class = "jumbotron";
 
 $default = [
-                "header"    =>  '<h1 class=\'display-4\'>'.
+                "header"    =>  html('h1', ['class'=>'display-4']).
                                     'Header placeholder'.
-                                '</h1></br>',
+                                html('h1', '/').html('br'),
 
-                "body"      =>  '<p class=\'lead\'>'.
-                                    'This is a body placeholder.'.
-                                '</p>'.
-                                '<button class=\'btn btn-primary\'>'.
-                                    'Take action!'.
-                                '</button>',
+                "body"      =>  html('p', ['class'=>'lead']).
+                                   'This is a body placeholder.'.
+                              html('p', '/').
+                              html('button', ['class'=>'btn btn-primary']).
+                              'Take action!'.
+                              html('button', '/'),
 
                 "attr"      =>  "",
                 "template"  =>  "jumbotron-fluid",
@@ -31,12 +31,13 @@ $default = [
            $scheme =   [
                           [
                                "condition" => true,
-                               "line"      => '<div id="'.$id.'" class="'.$base_class.
-                                                    ' '.$template.'" '.attr_append($attr).'>'
+                               "line"      => html('div',"id='$id' class='$base_class 
+                               $template' ".attr_append($attr)
+                               )
                           ],
                           [
                                "condition" => true,
-                               "line"      => '<div class="container">'
+                               "line"      => html('div', ['class'=>'container'])
                           ],
                           [
                                "condition" => true,
@@ -48,19 +49,19 @@ $default = [
                           ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                           [
-                               "condition" => $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => !empty($script),
+                              "line"      => html('script').$script.html('script','close')
+                              ],
+                              [
+                                   "condition" => !empty($style),
+                                   "line"      => html('style').$style.html('style','close')
+                              ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                        ];
                        

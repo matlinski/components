@@ -19,8 +19,11 @@ foreach(Component($input, $default, $base_class) as $key => $value) {
 $scheme =   [
                [
                     "condition" => true,
-                    "line"      => '<'.$tag.' id="'.$id.'" class="'.$base_class.
-                        ' '.$template.'" '.attr_append($attr, ["role"  =>  "alert"]).'>'
+                    "line"      => html($tag,"id='$id' class='$base_class 
+                    $template' ".attr_append($attr, [
+                         "role" =>  "alert"
+                    ])
+                    )
                ],
                [
                     "condition" => true,
@@ -28,21 +31,21 @@ $scheme =   [
                ],
                [
                     "condition" => $dismisable,
-                    "line"      => '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>'
+               "line"      => html('button', ['type'=>'button','class'=>'close', 'data-dismiss'=>'alert','aria-label'=>'Close']).
+                                        html('span',['aria-hidden'=>'true']).'&times;'.html('span','/').
+                              html('button', '/')
                ],
                [
-                    "condition" => $script !== false,
-                    "line"      => "<script>$script</script>"
+                    "condition" => !empty($script),
+                    "line"      => html('script').$script.html('script','/')
                ],
                [
-                    "condition" => $style !== false,
-                    "line"      => "<style>$style</style>"
+                    "condition" => !empty($style),
+                    "line"      => html('style').$style.html('style','/')
                ],
                [
                     "condition" => true,
-                    "line"      => "</$tag>"
+                    "line"      => html($tag,'/')
                ],
             ];
             

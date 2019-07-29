@@ -34,24 +34,25 @@ $default = [
        $scheme =   [
                       [
                            "condition" => true,
-                           "line"      => '<div id="'.$trigger_id.'" class="'.$base_class.
-                                    ' '.$template.'" '.attr_append($attr, [
-                                                                             "tabindex"    =>  "-1",
-                                                                             "role"        =>  "dialog",
-                                                                             "aria-hidden" =>  "true"
-                                                                         ]).'>'
+                           "line"      => html('div',"id='$trigger_id' class='$base_class 
+                                        $template' ".attr_append($attr, [
+                                             "tabindex"    =>  "-1",
+                                             "role"        =>  "dialog",
+                                             "aria-hidden" =>  "true"
+                                         ])
+                                        )
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<div class="modal-dialog" role="document">'
+                           "line"      => html('div',['class'=>'modal-dialog', 'role'=>'document'])
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<div class="modal-content">'
+                           "line"      => html('div',['class'=>'modal-content'])
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<div class="modal-header">'
+                           "line"      => html('div',['class'=>'modal-header'])
                       ],
                       [
                            "condition" => true,
@@ -59,19 +60,19 @@ $default = [
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">
-                                                  &times;
-                                              </span>
-                                          </button>'
+                           "line"      => html('button', ['type'=>'button','class'=>'close', 'data-dismiss'=>'modal','aria-label'=>'Close']).
+                                                  html('span',['aria-hidden'=>'true']).
+                                                       '&times;'
+                                                  .html('span','/').
+                                             html('button', '/')
                       ],
                       [
                            "condition" => true,
-                           "line"      => '</div>'
+                           "line"      => html('/')
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<div class="modal-body">'
+                           "line"      => html('div',['class'=>'modal-body'])
                       ],
                       [
                            "condition" => true,
@@ -79,17 +80,17 @@ $default = [
                       ],
                       [
                            "condition" => true,
-                           "line"      => '</div>'
+                           "line"      => html('/')
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<div class="modal-footer">'
+                           "line"      => html('div',['class'=>'modal-footer'])
                       ],
                       [
                            "condition" => true,
-                           "line"      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                            Close
-                                        </button>'
+                           "line"      => html('button', ['type'=>'button','class'=>'btn btn-secondary', 'data-dismiss'=>'modal']).
+                                                       'Close'.
+                                             html('button', '/')
                       ],
                       [
                            "condition" => true,
@@ -97,27 +98,27 @@ $default = [
                       ],
                       [
                            "condition" => true,
-                           "line"      => '</div>'
+                           "line"      => html('/')
                       ],
                       [
                            "condition" => true,
-                           "line"      => '</div>'
+                           "line"      => html('/')
                       ],
                       [
                            "condition" => true,
-                           "line"      => '</div>'
+                           "line"      => html('/')
                       ],
                       [
-                           "condition" => $script !== false,
-                           "line"      => "<script>$script</script>"
+                         "condition" => !empty($script),
+                         "line"      => html('script').$script.html('script','close')
                       ],
                       [
-                           "condition" => $style !== false,
-                           "line"      => "<style>$style</style>"
+                         "condition" => !empty($style),
+                         "line"      => html('style').$style.html('style','close')
                       ],
                       [
-                           "condition" => true,
-                           "line"      => '</div>'
+                          "condition" => true,
+                          "line"      => html('/')
                       ],
                    ];
                    

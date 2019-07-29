@@ -13,7 +13,45 @@ $default = [
                 "script"    =>  ""
             ];
 
-return Compiler($base_class, Component($input, $default, $base_class));
+foreach(Component($input, $default, $base_class) as $key => $value) {
+    $$key = $value;
+}
+           
+           $scheme =   [
+                          [
+                               "condition" => true,
+                               "line"      => html('div',"id='$id' class='$base_class'
+                                 style='width: ".$max.'%" '.attr_append($attr)
+                               )
+                          ],
+                          [
+                               "condition" => true,
+                               "line"      => html('div', [
+                                                  'class'=>'progress-bar '.$template,
+                                                  'role'=>'progressbar',
+                                                  'aria-valuenow'=>$progress,
+                                                  'aria-valuemin'=>$min,
+                                                  'aria-valuemax'=>$max,
+                                                  'style'=>'width: '.($progress/$max*100).'%'
+                                                  ]).
+                                             html('/')
+                          ],
+
+                          [
+                              "condition" => !empty($script),
+                              "line"      => html('script').$script.html('script','close')
+                         ],
+                         [
+                              "condition" => !empty($style),
+                              "line"      => html('style').$style.html('style','close')
+                         ],
+                          [
+                               "condition" => true,
+                               "line"      => html('/')
+                          ],
+                       ];
+                       
+           return Compiler($base_class, $scheme);
            
 }
 

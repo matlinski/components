@@ -3,12 +3,11 @@ function Card($input = "") {
 $base_class = "card";
 
 $default = [
-                "content"   =>  "<h5>Title placeholder</h5>".
-                                "<p>Body placeholder</p>".
-                                "<button class='btn btn-primary'>Click here</button>",
+                "content"   =>  html('h5')."Title placeholder".html('h5',"/").
+                                html('p')."Body placeholder".html('p',"/").
+                                html('button',['class'=>'btn btn-primary']).'Click here'.html('button',"/"),
 
-                "image"     =>  '<img width=\'100%\' src=\'https://source.unsplash.com/'.
-                                    rand(320,370).'x350/\' alt=\'...\'>',
+                "image"     =>  html('img',['width'=>'100%', 'src'=>'https://source.unsplash.com/'.rand(320,370).'x350/', 'alt'=>'...']),
                 
                 "attr"      =>  "",                   
                 "template"  =>  "col-lg-3 col-md-5 col-sm-7 col-12",
@@ -27,7 +26,9 @@ $default = [
            $scheme =   [
                           [
                                "condition" => true,
-                               "line"      => '<div id="'.$id.'" class="'.$base_class.' '.$template.'" '.attr_append($attr).'>'
+                               "line"      => html('div',"id='$id' class='$base_class 
+                               $template' ".attr_append($attr)
+                               )
                           ],
                           [
                                "condition" => true,
@@ -35,21 +36,21 @@ $default = [
                           ],
                           [
                                "condition" => true,
-                               "line"      => '<div class="card-body">'.
+                               "line"      => html('div', ['class'=>'card-body']).
                                                  $content.
-                                             '</div>'
+                                             html('/')
                           ],
                           [
-                               "condition" => $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                              "condition" => !empty($script),
+                              "line"      => html('script').$script.html('script','close')
+                              ],
+                              [
+                                   "condition" => !empty($style),
+                                   "line"      => html('style').$style.html('style','close')
+                              ],
                           [
                                "condition" => true,
-                               "line"      => "</div>"
+                               "line"      => html('/')
                           ],
                        ];
                        

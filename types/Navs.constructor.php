@@ -6,17 +6,15 @@ $base_class = "nav";
 $default = [
                 "content"   => 
                     [
-                        '<a href=\'home.html\'>'.
-                            'home'.
-                        '</a>',
-
-                        '<a href=\'about.html\'>'.
+                        html('a',['href'=>'home.html']).
+                            'Home'.
+                        html('a','/'),
+                        html('a',['href'=>'about.html']).
                             'About us'.
-                        '</a>',
-
-                        '<a href=\'contact.html\'>'.
+                        html('a','/'),
+                        html('a',['href'=>'contact.html']).
                             'Contact'.
-                        '</a>'
+                        html('a','/')
                     ],
                 'active'    =>  2,
                 'disabled'  =>  1,
@@ -25,7 +23,58 @@ $default = [
                 "style"     =>  "",
                 "script"    =>  ""
             ];
-return Compiler($base_class, Component($input, $default, $base_class));
+            foreach(Component($input, $default, $base_class) as $key => $value) {
+                $$key = $value;
+           }
+           function feature($content, $active, $disabled){
+            $content_compiler = '';
+            foreach($content as $key => $value) {
+                             $value = explode('href', $value);
+    
+                             if (($key+1) == $active) {
+                                 $value[0] .= 'class ="nav-link active" ';
+    
+                             } elseif (($key+1) == $disabled) {
+                                 $value[0] .= 'class ="nav-link disabled" ';
+    
+                             } else {
+                                 $value[0] .= 'class ="nav-link" ';
+                             }
+                             $value = implode('href', $value);
+                             $content_compiler .= '<li class="nav-item">'.$value.'</li>';
+                         }
+                         return $content_compiler;
+           }
+           
+           $scheme =   [
+                          [
+                               "condition" => true,
+                               "line"      => html('ul',"id='$id' class='$base_class 
+                                                $template' ".attr_append($attr))
+                          ],
+                          [
+                               "condition" => is_array($content),
+                               "line"      => feature($content, $active, $disabled)
+                          ],
+                          [
+                               "condition" => !is_array($content),
+                               "line"      => 'Please set the content as an array'
+                          ],
+                          [
+                               "condition" => !empty($script),
+                               "line"      => html('script').$script.html('script','close')
+                          ],
+                          [
+                                "condition" => !empty($style),
+                                "line"      => html('style').$style.html('style','close')
+                          ],
+                          [
+                               "condition" => true,
+                               "line"      => html('ul','/')
+                          ],
+                       ];
+                       
+           return Compiler($base_class, $scheme);
 }
 
 ?>

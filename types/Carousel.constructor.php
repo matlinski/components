@@ -128,13 +128,13 @@ $default = [
                                "line"      => "</div>"
                           ],
                           [
-                               "condition" => $script !== false,
-                               "line"      => "<script>$script</script>"
-                          ],
-                          [
-                               "condition" => $style !== false,
-                               "line"      => "<style>$style</style>"
-                          ],
+                            "condition" => !empty($script),
+                            "line"      => html('script').$script.html('script','close')
+                            ],
+                            [
+                                    "condition" => !empty($style),
+                                    "line"      => html('style').$style.html('style','close')
+                            ],
                           [
                                "condition" => true,
                                "line"      => "</div>"
