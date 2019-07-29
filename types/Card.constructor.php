@@ -27,8 +27,7 @@ $default = [
                           [
                                "condition" => true,
                                "line"      => html('div',"id='$id' class='$base_class 
-                               $template' ".attr_append($attr)
-                               )
+                               $template' ".attr_append($attr))
                           ],
                           [
                                "condition" => true,
@@ -42,11 +41,11 @@ $default = [
                           ],
                           [
                               "condition" => !empty($script),
-                              "line"      => html('script').$script.html('script','close')
+                              "line"      => html('script').$script.html('script','/')
                               ],
                               [
                                    "condition" => !empty($style),
-                                   "line"      => html('style').$style.html('style','close')
+                                   "line"      => html('style').$style.html('style','/')
                               ],
                           [
                                "condition" => true,

@@ -16,6 +16,22 @@
 </head>
 <body>
 
-<?= JUMBOTRON()?>
+<?= Alert()?>
+<?= Badge()?>
+<?= BreadCrumb()?>
+<?= Button()?>
+<?= Card()?>
+<?= Carousel(['indicators'=>true])?>
+<?= Input()?>
+<?= Jumbotron()?>
+<?= Media()?>
+<?= Modal()?>
+<?= Navbar()?>
+<?= Navs()?>
+<?= Pagination()?>
+<?= Progress()?>
+<?= Scrollspy()?>
+<?= Spinner()?>
+<?= Toast()?>
 </body>
 </html>

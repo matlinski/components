@@ -1,4 +1,31 @@
 <?php
+function f_breadcrumb($content){
+    if(is_array($content)){
+            $content_compiler = "";
+            $i = 1;
+            foreach($content as $value) {
+            
+                if ($i === (count($content)) ) {
+                    $content_compiler .= 
+                    html('li', ['class'=>'breadcrumb-item active','aria-current'=>'page']).
+                    $value.
+                    html('li','/');    
+                
+                }	else	{
+                    $content_compiler .= 
+                    html('li', ['class'=>'breadcrumb-item']).
+                    $value.
+                    html('li','/');
+                } 
+            $i++;
+            }
+            return $content_compiler;
+
+    } else {
+        return 'Please set the content as an array';
+    }
+};
+
 
 function Breadcrumb($input = "") {
 $base_class = "breadcrumb";
@@ -20,34 +47,7 @@ $default = [
             foreach(Component($input, $default, $base_class) as $key => $value) {
                 $$key = $value;
            }
-           if(is_array($content)){
-
-                function feature($content){
-                    $content_compiler = "";
-                    $i = 1;
-                    foreach($content as $value) {
-                    
-                        if ($i === (count($content)) ) {
-                            $content_compiler .= 
-                            html('li', ['class'=>'breadcrumb-item active','aria-current'=>'page']).
-                            $value.
-                            html('li','/');    
-                       
-                        }	else	{
-                            $content_compiler .= 
-                            html('li', ['class'=>'breadcrumb-item']).
-                            $value.
-                            html('li','/');
-                        } 
-                    $i++;
-                    }
-                    return $content_compiler;
-            }
-           } else {
-            function feature($content){
-                return 'Please set the content as an array';
-            }
-           }
+           
            
            if ($separator) {
                      $style .= '
@@ -65,7 +65,7 @@ $default = [
                           ],
                           [
                                "condition" => true,
-                               "line"      => feature($content)
+                               "line"      => f_breadcrumb($content)
                           ],
                           [
                                "condition" => !empty($script),

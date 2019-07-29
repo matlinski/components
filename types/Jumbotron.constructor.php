@@ -53,11 +53,11 @@ $default = [
                           ],
                           [
                               "condition" => !empty($script),
-                              "line"      => html('script').$script.html('script','close')
+                              "line"      => html('script').$script.html('script','/')
                               ],
                               [
                                    "condition" => !empty($style),
-                                   "line"      => html('style').$style.html('style','close')
+                                   "line"      => html('style').$style.html('style','/')
                               ],
                           [
                                "condition" => true,

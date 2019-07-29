@@ -56,15 +56,15 @@ $default = [
             $scheme =   [
                            [
                                 "condition" => $dropdown && is_array($dropdown) && !preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
-                                "line"      => '<div class="dropdown '.$drop_length.'">'
+                                "line"      => html('div', ['class'=>'dropdown '.$drop_length])
                            ],
                            [
                                 "condition" => $dropdown && is_array($dropdown) && preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
-                                "line"      => '<div class="dropdown">'
+                                "line"      => html('div',['class'=>'dropdown'])
                            ],
                            [
                                 "condition" => $dropdown && !is_array($dropdown) && !$tooltip && !$popover && !$collapse,
-                                "line"      => '<div class="dropdown">'
+                                "line"      => html('div',['class'=>'dropdown'])
                            ],
                           [
                                "condition" => $tag === "button" && $tooltip && is_array($tooltip) && !$dropdown && !$popover && !$collapse,

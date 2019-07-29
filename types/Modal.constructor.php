@@ -4,17 +4,17 @@ function Modal($input = "") {
 $base_class = "modal";
 
 $default = [
-            "header"    =>  '<h5 class=\'modal-title\'>'.
+            "header"    =>  html('h5', ['class'=>'modal-title']).
                                 'Header placeholder'.
-                            '</h5>',
+                            html('h5', '/'),
 
-            "body"      =>  '<p>'.
+            "body"      =>  html('p').
                                 'Body placeholder'.
-                            '</p>',
+                            html('p', '/'),
 
-            "footer"    =>  '<button class=\'btn btn-primary\'>'.
+            "footer"    =>  html('button', ['class'=>'btn btn-primary']).
                                 'Take action!'.
-                            '</button>',
+                            html('button', '/'),
 
             "trigger_id"=>  "myID",
             "attr"      =>  '',
@@ -110,11 +110,11 @@ $default = [
                       ],
                       [
                          "condition" => !empty($script),
-                         "line"      => html('script').$script.html('script','close')
+                         "line"      => html('script').$script.html('script','/')
                       ],
                       [
                          "condition" => !empty($style),
-                         "line"      => html('style').$style.html('style','close')
+                         "line"      => html('style').$style.html('style','/')
                       ],
                       [
                           "condition" => true,

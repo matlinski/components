@@ -5,13 +5,13 @@ $base_class = "toast";
 
 $default = [
               "header"    =>  html('img', ['src'=>'https://picsum.photos/20/20',
-                              'class'=>'rounded mr-2','alt'=>'Alt placeholder']).
+                              'class'=>'rounded mr-2','alt'=>'...']).
                               html('strong', ['class'=>'mr-auto']).
                                   'Title example'.
-                              html('strong', 'close').
+                              html('strong', '/').
                               html('small').
                                 '11 mins ago'.
-                                html('small', 'close'),
+                              html('small', '/'),
 
               "body"      =>  'Body placeholder',
               "attr"      =>  "",

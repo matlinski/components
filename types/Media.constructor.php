@@ -17,7 +17,7 @@ $default = [
                                    'Click here'.
                                 html('button',"/"),
 
-                "image"     =>  html('img',['src'=>'<img src=\'https://picsum.photos/'.rand(190,210).'/200','class'=>'card-img-top col-md-2 col-sm-4 col-6 mt-4','alt'=>'...']),
+                "image"     =>  html('img',['src'=>'https://picsum.photos/'.rand(190,210).'/200','class'=>'card-img-top col-md-2 col-sm-4 col-6 mt-4','alt'=>'...']),
                                     
                 "reverse"   =>  false,
                 "attr"      =>  "",
@@ -63,11 +63,11 @@ $default = [
                           ],
                           [
                               "condition" => !empty($script),
-                              "line"      => html('script').$script.html('script','close')
+                              "line"      => html('script').$script.html('script','/')
                          ],
                          [
                               "condition" => !empty($style),
-                              "line"      => html('style').$style.html('style','close')
+                              "line"      => html('style').$style.html('style','/')
                          ],
                           [
                                "condition" => true,

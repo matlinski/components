@@ -21,7 +21,7 @@ foreach(Component($input, $default, $base_class) as $key => $value) {
                           [
                                "condition" => true,
                                "line"      => html('div',"id='$id' class='$base_class'
-                                 style='width: ".$max.'%" '.attr_append($attr)
+                                 style='width: $max.% ' ".attr_append($attr)
                                )
                           ],
                           [
@@ -33,22 +33,21 @@ foreach(Component($input, $default, $base_class) as $key => $value) {
                                                   'aria-valuemin'=>$min,
                                                   'aria-valuemax'=>$max,
                                                   'style'=>'width: '.($progress/$max*100).'%'
-                                                  ]).
-                                             html('/')
+                                                  ])."$progress%".html('/')
+                                             
                           ],
-
                           [
                               "condition" => !empty($script),
-                              "line"      => html('script').$script.html('script','close')
+                              "line"      => html('script').$script.html('script','/')
                          ],
                          [
                               "condition" => !empty($style),
-                              "line"      => html('style').$style.html('style','close')
+                              "line"      => html('style').$style.html('style','/')
                          ],
                           [
                                "condition" => true,
                                "line"      => html('/')
-                          ],
+                          ]
                        ];
                        
            return Compiler($base_class, $scheme);
