@@ -54,18 +54,18 @@ $default = [
          }
             
             $scheme =   [
+                         //   [
+                         //        "condition" => $dropdown && is_array($dropdown) && !preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
+                         //        "line"      => html('div', ['class'=>'dropdown '.$drop_length])
+                         //   ],
                            [
-                                "condition" => $dropdown && is_array($dropdown) && !preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
-                                "line"      => html('div', ['class'=>'dropdown '.$drop_length])
-                           ],
-                           [
-                                "condition" => $dropdown && is_array($dropdown) && preg_match("/[<>]+/", $drop_length) && !$tooltip && !$popover && !$collapse,
+                                "condition" => $dropdown && !$tooltip && !$popover && !$collapse,
                                 "line"      => html('div',['class'=>'dropdown'])
                            ],
-                           [
-                                "condition" => $dropdown && !is_array($dropdown) && !$tooltip && !$popover && !$collapse,
-                                "line"      => html('div',['class'=>'dropdown'])
-                           ],
+                         //   [
+                         //        "condition" => $dropdown && !is_array($dropdown) && !$tooltip && !$popover && !$collapse,
+                         //        "line"      => html('div',['class'=>'dropdown'])
+                         //   ],
                           [
                                "condition" => $tag === "button" && $tooltip && is_array($tooltip) && !$dropdown && !$popover && !$collapse,
                                "line"      => html('button',"id='$id' class='$base_class 
@@ -363,6 +363,10 @@ $default = [
                                                 $collapse.
                                              html('/')
                           ],
+                          [
+                              "condition" => $dropdown && !$tooltip && !$popover && !$collapse,
+                              "line"      => html('/')
+                         ],
                        ];
                        
            return Compiler($base_class, $scheme);

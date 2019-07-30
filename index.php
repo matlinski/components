@@ -22,16 +22,20 @@
 <?= Button()?>
 <?= Card()?>
 <?= Carousel()?>
+<?= Button(['content'=>'collapse','collapse'=>Navs(['template'=>'flex-column'])])?>
+<?= Button(['content'=>'dropdown','dropdown'=>Navs(['template'=>'flex-column'])])?>
 <?= Input()?>
 <?= Jumbotron()?>
 <?= Media()?>
 <?= Modal()?>
-<?= Navbar()?>
 <?= Navs()?>
+<?= Navbar()?>
 <?= Pagination()?>
+<?= Button(['content'=>'popover','popover'=>'test'])?>
 <?= Progress()?>
 <?= Scrollspy()?>
 <?= Spinner()?>
 <?= Toast()?>
+<?= Button(['content'=>'tooltip','tooltip'=>'test'])?>
 </body>
 </html>

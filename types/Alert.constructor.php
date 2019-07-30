@@ -9,7 +9,7 @@ $default = [
                 "template"  =>   "alert-warning fade show",
                 "dismisable"=>   true,
                 "style"     =>   "",
-                "script"    =>   "&"
+                "script"    =>   ""
             ];
 
 foreach(Component($input, $default, $base_class) as $key => $value) {
