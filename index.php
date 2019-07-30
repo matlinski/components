@@ -19,10 +19,12 @@
 <?= Alert()?>
 <?= Badge()?>
 <?= BreadCrumb()?>
-<?= Button()?>
+<?= Button(['tag'=>'button'])?>
+<?= Button(['tag'=>'input'])?>
+<?= Button(['tag'=>'a'])?>
 <?= Card()?>
 <?= Carousel()?>
-<?= Button(['content'=>'collapse','collapse'=>Navs(['template'=>'flex-column'])])?>
+<?= Button()?>
 <?= Button(['content'=>'dropdown','dropdown'=>Navs(['template'=>'flex-column'])])?>
 <?= Input()?>
 <?= Jumbotron()?>
